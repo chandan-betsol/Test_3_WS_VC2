@@ -396,30 +396,6 @@ relationship c3d18725-5b1a-4d57-8d05-b7a2496ed1f5
 	fromColumn: vwResourceDetails.HireDate
 	toColumn: dimDate_ResourceDetails.Date
 
-relationship 816085aa-cfde-490f-a816-fb1d4f97987b
-	fromColumn: vwAccountDetails.CLASSID
-	toColumn: dimClinic.ID
-
-relationship 460c96a7-17bc-4b21-b18c-8f617a2c3789
-	fromColumn: vwAccountDetails.DEPARTMENTID
-	toColumn: dimDepartment.ID
-
-relationship 5da5cd1b-b11d-4dc2-9dc9-3dea83b56a24
-	fromColumn: vwAccountDetails.LOCATIONID
-	toColumn: dimLocation.ID
-
-relationship 6cb2c913-70c7-4329-9ab1-039c18930bd1
-	fromColumn: vwBudget.CLASSID
-	toColumn: dimClinic.ID
-
-relationship c1f95b57-4a4e-42f4-a380-2d67760b50c0
-	fromColumn: vwBudget.DEPT_ID
-	toColumn: dimDepartment.ID
-
-relationship 07b540c3-8882-4b23-b87b-13c7d0ab6ace
-	fromColumn: vwBudget.LOCATION_ID
-	toColumn: dimLocation.ID
-
 relationship 35b08bce-1f23-4209-91e0-83b5bfe7c45a
 	joinOnDateBehavior: datePartOnly
 	fromColumn: vwCollectiveLead.FirstVisitDate
