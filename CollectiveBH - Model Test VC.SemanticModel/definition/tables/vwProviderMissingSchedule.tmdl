@@ -1,0 +1,52 @@
+table vwProviderMissingSchedule
+	lineageTag: fd9b20d7-673d-4f19-ac5f-f33e2e5cb824
+
+	column ResourceId
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b64137e2-e03f-40cb-b1fb-c97de6f7eb9a
+		summarizeBy: count
+		sourceColumn: ResourceId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provider
+		dataType: string
+		lineageTag: f5967c32-a133-4a82-8915-08ebf70d0c9b
+		summarizeBy: none
+		sourceColumn: Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreferredFacility
+		dataType: string
+		lineageTag: 945823b5-ef67-44e6-9d99-f8932257a21d
+		summarizeBy: none
+		sourceColumn: PreferredFacility
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: a3b29920-54a8-46c8-9995-c5c8110c6762
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwProviderMissingSchedule-4db53057-2e4d-48af-b25e-a45895958b69 = m
+		mode: import
+		queryGroup: FACT\DailyOps
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwProviderMissingSchedule = Source{[Schema="dbo",Item="vwProviderMissingSchedule"]}[Data],
+				    #"Merged Columns" = Table.CombineColumns(dbo_vwProviderMissingSchedule,{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"Provider")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_ResultType = Exception
+

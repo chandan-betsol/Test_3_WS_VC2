@@ -1,0 +1,116 @@
+table 3_Date_Expander_LDM
+	lineageTag: c7054f15-6e18-42c1-8f27-be37e0cdfcff
+
+	column Date
+		formatString: Short Date
+		lineageTag: f244df7a-4585-44fb-965b-d74bc4f2b8b2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Level
+		lineageTag: f4abb636-b918-442c-b2a3-4b386f05c7ef
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Level]
+		sortByColumn: 'Level Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level Sort'
+		dataType: string
+		isHidden
+		lineageTag: 2373c406-0e1d-4693-8b12-24710bb15b08
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Level Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		lineageTag: 165923d7-0916-4863-97bc-3b40d70e5e4d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Name]
+		sortByColumn: Sorter_column
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name Sort'
+		isHidden
+		lineageTag: d49c9638-ecc9-4545-a29c-f54f542576fb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Name Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Row Index Column' = ```
+			
+			IF(
+			    '3_Date_Expander_LDM'[Level] = "Day", 
+			        CALCULATE(
+			            COUNTROWS('3_Date_Expander_LDM'),
+			            FILTER(All('3_Date_Expander_LDM'), '3_Date_Expander_LDM'[Date] <= EARLIER('3_Date_Expander_LDM'[Date]))
+			        ),
+			        BLANK()
+			)
+			```
+		dataType: string
+		isHidden
+		lineageTag: 4a92ff53-f311-4e0e-8055-28bb3a9bb9ea
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sorter_column = ```
+			
+			IF(
+			    '3_Date_Expander_LDM'[Level] = "Day", 
+			    '3_Date_Expander_LDM'[Row Index Column],
+			    '3_Date_Expander_LDM'[Name Sort]
+			)
+			```
+		isHidden
+		lineageTag: 85e31689-18aa-4ce4-8be7-16aa68fab357
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 3_Date_Expander_LDM-a155b778-f9ee-4755-8d94-d62e89df2d81 = calculated
+		mode: import
+		source = ```
+				UNION(
+				    SELECTCOLUMNS( 
+				        dimDate,
+				        "Date", dimDate[Date], 
+				        "Level", "Year-Month", 
+				        "Level Sort", 1, 
+				        "Name", dimDate[YearMonthnumber],
+				        "Name Sort", dimDate[YearMonthnumber]
+				    ),
+				        SELECTCOLUMNS( 
+				        dimDate,
+				        "Date", dimDate[Date], 
+				        "Level", "Week", 
+				        "Level Sort", 2, 
+				        "Name", dimDate[LastSaturdayOfWeek],
+				        "Name Sort", dimDate[LastSaturdayOfWeek]
+				    ),
+				        SELECTCOLUMNS( 
+				        dimDate,
+				        "Date", dimDate[Date], 
+				        "Level", "Day", 
+				        "Level Sort", 3, 
+				        "Name", dimDate[Date],
+				        "Name Sort", dimDate[Date]
+				        )
+				)
+				```
+
+	annotation PBI_Id = 86e1bb88b4894af6930fe032b8d9508d
+

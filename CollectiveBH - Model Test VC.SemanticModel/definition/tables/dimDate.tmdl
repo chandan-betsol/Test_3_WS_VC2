@@ -1,0 +1,581 @@
+table dimDate
+	lineageTag: 0486b198-f75c-4615-ba6f-e709e5f8ad4a
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: mm/dd/yyyy
+		lineageTag: 53bcc6bd-f654-4fa7-a2e2-19fa2bc07d37
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		formatString: 0
+		lineageTag: 46a0988c-2dbb-43ab-8c49-b11de27a807a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = User
+
+	column 'Quarter No'
+		formatString: 0
+		lineageTag: 442c51a3-2c6e-462c-8765-f2bff41832b3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter No]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 4c8eafb7-5d30-443b-bd4e-bfdd7d57f92e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month No'
+		formatString: 0
+		lineageTag: 61938ece-5f92-4068-a7fe-7d6b859f6b47
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month No]
+
+		annotation SummarizationSetBy = User
+
+	column Month
+		lineageTag: 4a300a37-ef91-4193-abc2-fed65d61e401
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: 'Month No'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monthnumber
+		lineageTag: ec417991-29c4-43b0-96f5-d58a06ab402a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Monthnumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthnumber
+		lineageTag: 050191ba-923c-437f-9f94-df0e9c85ac3f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonthnumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthShort
+		lineageTag: 326ed2f0-e7d5-489e-a998-cf9b04444824
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonthShort]
+		sortByColumn: YearMonthnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShortYear
+		lineageTag: 08e95a7d-5421-430c-8c40-6a385ebc975c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthShortYear]
+		sortByColumn: YearMonthnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNameShort
+		lineageTag: d9d5e75d-30f3-43a0-96e7-d3cfbf03a7b2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthNameShort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNameLong
+		lineageTag: e7a8e3a2-1e8f-4201-918b-fd02c47cdb1d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthNameLong]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekNumber
+		formatString: 0
+		lineageTag: 2c5cec33-64e4-4fc6-aa70-150d6bb46c15
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayOfWeekNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		lineageTag: fd8d6b6e-e43e-47f8-98f5-79eafd15b337
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekShort
+		lineageTag: 00d9adb5-3dec-4404-a3b6-f0a1ecfc57c9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayOfWeekShort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number'
+		formatString: 0
+		lineageTag: 197dae7d-beed-4e77-9a17-6eb65c4531f8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week Number]
+
+		annotation SummarizationSetBy = User
+
+	column 'Week Number and Year'
+		lineageTag: 40f23664-bb9a-42bf-8e5b-168175d8e678
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week Number and Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekYearNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 019688f8-8162-4a14-8759-698dc1f4b7e9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekYearNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthWeekNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: f160e0f8-b956-410d-9adb-c56f7bc1d6d9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonthWeekNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: 68fe5b6c-f23f-445b-b564-95385509feec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = User
+
+	column 'Week Ending Fri Date'
+		lineageTag: b4fed0e7-182d-419e-bcb2-c85ad243c26a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week Ending Fri Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slicer Week'
+		lineageTag: cfe6eec8-796c-4183-8bfb-0592431077f0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Slicer Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slicer Month'
+		lineageTag: cea91890-0c53-434c-a94b-ec7d54e46005
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Slicer Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessDays = RELATED(cfgWeekDays[BusinessDays])
+		formatString: 0
+		lineageTag: ad560500-19d9-413a-8f47-cc76febc9a10
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekStart = FORMAT(RELATED(cfgWeekDays[StartWeek]),"yyyy-mm-dd")
+		lineageTag: 179cadc6-de47-4921-a086-f7383d887161
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekEnd = FORMAT(RELATED(cfgWeekDays[EndWeek]), "yyyy-mm-dd")
+		lineageTag: f7fb11b0-4ed3-42c5-b786-b7941a1f4c17
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date12 Weeks'
+		lineageTag: 8df9c770-b107-43fe-9159-37b769bfce4a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date12 Weeks]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MondayOfWeek =
+			
+			VAR CurrentDate = dimDate[Date]
+			VAR LastDayOfWeek = CurrentDate + (2 - WEEKDAY(CurrentDate, 1))
+			VAR Monday = LastDayOfWeek - IF(WEEKDAY(LastDayOfWeek, 1) = 7, 7, 0)
+			RETURN FORMAT(Monday, "yyyy-mm-dd")
+		lineageTag: efbfeb77-c806-427b-9ccd-78c703f42fb2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastSaturdayOfWeek
+		lineageTag: 3cd00ea5-4fb7-4f6a-8f30-17c79782aa60
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [LastSaturdayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastFridayOfWeek
+		lineageTag: a615542d-1a48-4831-81c7-9fbd2d24fd3a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [LastFridayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Marketing Slicer'
+		formatString: 0
+		lineageTag: b82f786f-aac5-4d92-abe5-caaade00289e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Marketing Slicer]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthDay
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c637629-2f21-46cc-8e34-1cb0354537b4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [YearMonthDay]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagOneYear
+		formatString: 0
+		lineageTag: b79fbd86-a1ea-499d-bf70-54766f87b596
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [FlagOneYear]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Ending Fri Date Current'
+		lineageTag: 71902b85-108b-4015-9527-09d1a503f621
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week Ending Fri Date Current]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slicer Current Week'
+		lineageTag: c32f1c4d-7019-489e-9c6c-40b6243564b0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Slicer Current Week]
+		sortByColumn: 'Slicer Current Week Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slicer Current Week Order'
+		formatString: 0
+		lineageTag: d09a9236-acc3-4337-8c46-7923f9bbf66f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Slicer Current Week Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagMonthPanel
+		lineageTag: a8ceef29-9343-4472-867b-f5f53093147b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FlagMonthPanel]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slicer Month Previous'
+		lineageTag: 56c86713-f7e1-444b-80d4-368c329e50a9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Slicer Month Previous]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DayOfWeek - Date'
+		lineageTag: 07f3fc24-c9c5-4b1a-bf99-b170dfd3f165
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayOfWeek - Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter and Year'
+		lineageTag: ba21ff75-6a0b-4666-97bc-3810b4305d8b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter and Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Of Month'
+		formatString: mm/dd/yyyy
+		lineageTag: 26658278-6140-4779-a92b-8a526a8323b8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Start Of Month]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'End Of Month'
+		formatString: mm/dd/yyyy
+		lineageTag: 5c6073a2-15d5-49f4-93a0-211d0607c40f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [End Of Month]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition dimDate-7a8a1b31-0b21-43c1-aa23-ddd8d931639e = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    CALENDAR ( DATE ( 2022, 1, 1 ), DATE(2025,12,31)),
+				    "Year", YEAR([Date]),
+				    "Quarter No", QUARTER([Date]),
+				    "Quarter", "Q" & QUARTER([Date]),
+				    "Month No", MONTH([Date]),
+				    "Month", FORMAT([Date], "MMM"),
+				    "Monthnumber", FORMAT ( [Date], "MM" ),
+				    "YearMonthnumber", FORMAT ( [Date], "YYYY-MM" ),
+				    "YearMonthShort", FORMAT ( [Date], "YYYY-mmm" ),
+				    "MonthShortYear",FORMAT([Date], "mmm-YYYY"),
+				    "MonthNameShort", FORMAT ( [Date], "mmm" ),
+				    "MonthNameLong", FORMAT ( [Date], "mmmm" ),
+				    "DayOfWeekNumber", WEEKDAY ( [Date] ),
+				    "DayOfWeek", FORMAT ( [Date], "dddd" ),
+				    "DayOfWeekShort", FORMAT ( [Date], "ddd" ),
+				    "Week Number", WEEKNUM ( [Date] ),
+				    "Week Number and Year", "W" & WEEKNUM ( [Date] ) & " " & YEAR ( [Date] ),
+				    "WeekYearNumber", YEAR ( [Date] ) & 100 + WEEKNUM ( [Date] ),
+				    "YearMonthWeekNumber", 
+				        YEAR ( [Date] ) & FORMAT ( [Date], "MM" ) & IF(LEN(WEEKNUM( [Date] ))= 1,"0"& WEEKNUM( [Date] ), 
+				        WEEKNUM( [Date] )
+				        ),
+				    "Day", DAY([Date]),
+				-------------------------------------------------------------------
+				    "Week Ending Fri Date", 
+				        FORMAT(
+				            [Date] - 1 -  WEEKDAY([date]), 
+				            "yyyy-mm-dd"
+				        ),
+				
+				-------------------------------------------------------------------
+				    "Week Ending Fri Date Current", 
+				        FORMAT(
+				            [Date] + 7 - WEEKDAY([Date]-6),
+				            "yyyy-mm-dd"
+				        ),
+				-------------------------------------------------------------------
+				    "Slicer Week" ,
+				        VAR PreviousWeekStart = TODAY() - 7 - WEEKDAY(TODAY() - 7) + 1
+				        VAR CurrentDate = [Date]
+				        RETURN
+				            SWITCH(
+				                TRUE(),
+				                CurrentDate >= PreviousWeekStart && CurrentDate <= PreviousWeekStart + 6,
+				                    "Previous Week",
+				                YEAR(CurrentDate) < YEAR(TODAY()),
+				                    FORMAT(CurrentDate + 6 - WEEKDAY(CurrentDate), "yyyy-mm-dd"),
+				                WEEKNUM(CurrentDate) < WEEKNUM(TODAY()),
+				                    FORMAT(CurrentDate + 6 - WEEKDAY(CurrentDate), "yyyy-mm-dd"),
+				                BLANK()
+				            ),
+				-------------------------------------------------------------------
+				    "Date12 Weeks",
+				        --VAR MinDate = TODAY() - (9 * 7) - WEEKDAY(TODAY(), 2) + 1  -- monday 9 weeks past
+				        --VAR _date = FORMAT( [Date], "mm/dd/yyyy" )
+				        VAR MaxDate = TODAY() + (3 * 7) + (7 - WEEKDAY(TODAY(), 1)) -- sunday 3 weeks futures
+				        RETURN
+				            IF(
+				                --[Date] >= MinDate && [Date] <= MaxDate,
+				                [Date] >= DATEVALUE("1/1/2023") && [Date] <= MaxDate, -- tuve que transformar la fecha en datevalue para poder comparar con el mismo formato, de lo contrario entraba 2022 cuando solo queria 2023 
+				                "Y",
+				                "N"
+				            ),
+				-------------------------------------------------------------------
+				    "Slicer Month",
+				        VAR CurrentYearMonth = FORMAT ( TODAY() , "YYYY-MM" )
+				        VAR DateYearMonth = FORMAT ( [Date], "YYYY-MM" )
+				        RETURN
+				            IF(
+				                DateYearMonth = CurrentYearMonth,
+				                "Current Month",
+				                IF(
+				                    DateYearMonth < CurrentYearMonth,
+				                    DateYearMonth,
+				                    BLANK()
+				                )
+				            ),
+				--------------------------------------------------------------------
+				    "Slicer Month Previous",
+				        VAR PreviousYearMonth = FORMAT ( EDATE(TODAY(), -1) , "YYYY-MM" )
+				        VAR DateYearMonth = FORMAT ( [Date], "YYYY-MM" )
+				        RETURN
+				            IF(
+				                DateYearMonth = PreviousYearMonth,
+				                "Previous Month",
+				                IF(
+				                    DateYearMonth < PreviousYearMonth,
+				                    DateYearMonth,
+				                    BLANK()
+				                )
+				            ),
+				-------------------------------------------------------------------
+				    "LastSaturdayOfWeek", 
+				        VAR CurrentDate = [Date]
+				        VAR LastDayOfWeek = CurrentDate + (7 - WEEKDAY(CurrentDate, 1) )
+				        VAR LastFriday = LastDayOfWeek - IF( WEEKDAY(LastDayOfWeek, 1) = 6, 6, 0 )
+				        RETURN 
+				            FORMAT(LastFriday, "yyyy-mm-dd"),
+				-------------------------------------------------------------------
+				    "LastFridayOfWeek", 
+				        VAR CurrentDate = [Date]
+				        VAR LastDayOfWeek = CurrentDate + (6 - WEEKDAY(CurrentDate, 1) )
+				        VAR LastFriday = LastDayOfWeek - IF(WEEKDAY(LastDayOfWeek, 1) = 7, 7, 0)
+				        RETURN 
+				            FORMAT(LastFriday, "yyyy-mm-dd"),
+				-------------------------------------------------------------------
+				    "Marketing Slicer", 
+				        IF( 
+				            --YEAR([Date]) = YEAR(TODAY()) && MONTH([Date]) <= MONTH(TODAY()),   -- In this year and less of equal to current month
+				            --YEAR([Date]) <= YEAR(TODAY()) && MONTH([Date]) <= MONTH(TODAY()) ,   -- Less or equal than this year and month
+				            [Date] > TODAY(),
+				            0 , 
+				            1
+				        ),
+				-------------------------------------------------------------------
+				    "YearMonthDay", 
+				        YEAR ( [Date] ) & FORMAT ( [Date], "MM" ) & FORMAT( [Date], "DD"),
+				-------------------------------------------------------------------
+				    "FlagOneYear", 
+				        IF(
+				            AND(
+				                [Date] >= DATE( YEAR( TODAY() ) - 1, MONTH( TODAY() ), 1),
+				                --[Date] <= DATE(YEAR(TODAY()), MONTH(TODAY()), 1)
+				                [Date] <= TODAY()
+				            ),
+				            1,
+				            0
+				        ),
+				-------------------------------------------------------------------
+				"Slicer Current Week" ,
+				        VAR CurrentWeekStart = TODAY() - WEEKDAY(TODAY() - 7) + 1
+				        VAR CurrentDate = [Date]
+				        RETURN 
+				            SWITCH(
+				                TRUE(),
+				                CurrentDate >= CurrentWeekStart && CurrentDate <= CurrentWeekStart + 6,
+				                    "Current Week",
+				                YEAR(CurrentDate) < YEAR(TODAY()),
+				                    BLANK(),
+				                CurrentDate < TODAY() && WEEKNUM(CurrentDate) >= WEEKNUM(TODAY())-6,
+				                    FORMAT(CurrentDate + 6 - WEEKDAY(CurrentDate), "yyyy-mm-dd"),
+				                CurrentDate > TODAY() && WEEKNUM(CurrentDate) <= WEEKNUM(TODAY())+4,
+				                    FORMAT(CurrentDate + 6 - WEEKDAY(CurrentDate), "yyyy-mm-dd"),
+				               BLANK()
+				            ),
+				-----------------------------------------
+				"Slicer Current Week Order" ,
+				        VAR CurrentWeekStart = TODAY() - WEEKDAY(TODAY() - 7) + 1
+				        VAR CurrentDate = [Date]
+				        RETURN 
+				            SWITCH(
+				                TRUE(),
+				                CurrentDate >= CurrentWeekStart && CurrentDate <= CurrentWeekStart + 6,
+				                    WEEKNUM(CurrentDate),
+				                YEAR(CurrentDate) < YEAR(TODAY()),
+				                    0,
+				                CurrentDate < TODAY() && WEEKNUM(CurrentDate) >= WEEKNUM(TODAY())-6,
+				                    WEEKNUM(CurrentDate),
+				                CurrentDate > TODAY() && WEEKNUM(CurrentDate) <= WEEKNUM(TODAY())+4,
+				                    WEEKNUM(CurrentDate),
+				               0
+				            ),
+				-------------------------------------------------------------------
+				    "FlagMonthPanel",
+				    VAR FechaActual = TODAY()
+				    VAR MesActual = MONTH(FechaActual)
+				    VAR AnioActual = YEAR(FechaActual)
+				
+				    VAR MesPrevio = MONTH(EDATE(FechaActual, -1))
+				    VAR AnioPrevio = YEAR(EDATE(FechaActual, -1))
+				
+				    VAR MesAnteriorAlPrevio = MONTH(EDATE(FechaActual, -2))
+				    VAR AnioAnteriorAlPrevio = YEAR(EDATE(FechaActual, -2))
+				
+				    RETURN 
+				        IF(
+				            MONTH([Date]) = MesActual && YEAR([Date]) = AnioActual,
+				            "Current Month",
+				            IF(
+				                MONTH([Date]) = MesPrevio && YEAR([Date]) = AnioPrevio,
+				                "Previous Month",
+				                IF(
+				                    MONTH([Date]) = MesAnteriorAlPrevio && YEAR([Date]) = AnioAnteriorAlPrevio,
+				                    "2 Months Ago",
+				                    BLANK()
+				                )
+				            )
+				        ),
+				
+				----------------------------------------------------------------------
+				    "DayOfWeek - Date", [Date] & " - " & FORMAT ( [Date], "dddd" ),
+				
+				-----------------------------------------------------------------------
+				    "Quarter and Year", FORMAT([Date], "YYYY") & " - Q" & FORMAT([Date], "Q"),
+				
+				----------------------------------------------------------------------
+				    "Start Of Month", EOMONTH([Date], -1) + 1,
+				
+				 -----------------------------------------------------------------------   
+				    "End Of Month", EOMONTH([Date], 0)
+				    
+				-------------------------------------------------------------------- End of Code        
+				)
+				```
+
+	annotation PBI_Id = a9ddd96454c44310a4c15bf5f546a653
+

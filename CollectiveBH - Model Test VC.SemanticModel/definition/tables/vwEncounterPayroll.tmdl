@@ -1,0 +1,258 @@
+table vwEncounterPayroll
+	lineageTag: e2486063-1f3f-431f-ac43-362e162e0515
+
+	column EncounterID
+		dataType: int64
+		formatString: 0
+		lineageTag: 25fc62e8-f54f-4c3b-bcc8-d3dac9071bee
+		summarizeBy: count
+		sourceColumn: EncounterID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: f0f8b78a-17c8-472b-b5e2-58a110ef2af1
+		summarizeBy: count
+		sourceColumn: EncounterTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRNNumber
+		dataType: string
+		lineageTag: d64bcf2f-479b-4bc1-844e-49b4f8f4b6f9
+		summarizeBy: none
+		sourceColumn: MRNNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 7d376e53-68ec-4bbc-8593-3bed957cae35
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityId
+		dataType: int64
+		formatString: 0
+		lineageTag: 57c3ef9f-2df9-4f16-8dc8-058fe271b5e2
+		summarizeBy: count
+		sourceColumn: FacilityId
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: 589f0e20-f98b-4497-8af4-4ad36573d176
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: int64
+		formatString: 0
+		lineageTag: 675588ce-f2e0-4924-88be-5f9617e01f41
+		summarizeBy: count
+		sourceColumn: PatientID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: 25a65f73-7d4a-4aa8-8d83-f4d4d93f92a2
+		summarizeBy: none
+		sourceColumn: ResourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ad3eaf1-ab1c-45b5-88f3-78e027411fad
+		summarizeBy: sum
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 56de364f-cc25-42e0-8322-a41cff9f9e80
+		summarizeBy: none
+		sourceColumn: VisitDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column EncounterDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: dc4b1ddd-85b0-4c0e-963e-597baf0b6468
+		summarizeBy: none
+		sourceColumn: EncounterDate
+
+		variation Variation
+			isDefault
+			relationship: 7d6f8b81-f04c-4d40-955b-1b6ed4020413
+			defaultHierarchy: LocalDateTable_0b050bce-2974-4fb6-9bea-a7e322814dca.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column NoteClosedDateTime
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: ac89b788-3e98-4738-9aff-32ffc3141138
+		summarizeBy: none
+		sourceColumn: NoteClosedDateTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column PatientLastName
+		dataType: string
+		lineageTag: 53bf6802-6af6-4771-baa5-ea36d3aadb3a
+		summarizeBy: none
+		sourceColumn: PatientLastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientFirstName
+		dataType: string
+		lineageTag: 4c8204c3-7ec4-414e-a1ff-53a4bab6aff8
+		summarizeBy: none
+		sourceColumn: PatientFirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column visitid
+		dataType: int64
+		formatString: 0
+		lineageTag: c3e03cbc-6dda-49ae-9036-bb05b944fca2
+		summarizeBy: sum
+		sourceColumn: visitid
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitPeriod
+		dataType: string
+		lineageTag: 7c511917-c579-48d9-b357-5085e8be9f7e
+		summarizeBy: none
+		sourceColumn: VisitPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column NCDPeriod
+		dataType: string
+		lineageTag: 2b75789c-9c1f-4f93-8943-6373a82584ca
+		summarizeBy: none
+		sourceColumn: NCDPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column NCDFlag
+		dataType: string
+		lineageTag: 0ab3617f-21b8-485f-805d-56e37a1c04e3
+		summarizeBy: none
+		sourceColumn: NCDFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitTypeGroup
+		dataType: string
+		lineageTag: 36ec0dd7-7233-45cf-8a52-606805100152
+		summarizeBy: none
+		sourceColumn: VisitTypeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagClosed
+		dataType: int64
+		formatString: 0
+		lineageTag: e73f0073-67e2-48a3-9612-cf3b068ef042
+		summarizeBy: sum
+		sourceColumn: FlagClosed
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagHasEncounter
+		dataType: int64
+		formatString: 0
+		lineageTag: 953d6265-4329-4b19-bbf7-f7f49896d764
+		summarizeBy: sum
+		sourceColumn: FlagHasEncounter
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterType
+		dataType: string
+		lineageTag: 79753944-2721-4987-8728-65efd50f7d08
+		summarizeBy: none
+		sourceColumn: EncounterType
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitStatus
+		dataType: string
+		lineageTag: 7045b852-4b38-45eb-9cff-53dc516c6fd7
+		summarizeBy: none
+		sourceColumn: VisitStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPTCode
+		dataType: string
+		lineageTag: 843109a9-6749-4bb3-acce-813108d9c03c
+		summarizeBy: none
+		sourceColumn: CPTCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitType
+		dataType: string
+		lineageTag: 3807e83a-28df-48b2-b981-8c95cbf9fc4c
+		summarizeBy: none
+		sourceColumn: VisitType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clinician
+		dataType: string
+		lineageTag: 7fa46cf1-8c89-4e1e-b445-9e9c3654acc6
+		summarizeBy: none
+		sourceColumn: Clinician
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwEncounterPayroll = m
+		mode: import
+		queryGroup: FACT\Payroll
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwEncounterPayroll = Source{[Schema="dbo",Item="vwEncounterPayroll"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwEncounterPayroll,{{"VisitPeriod", type text}, {"NCDPeriod", type text}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Changed Type",{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"Clinician"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Merged Columns",{{"VisitDate", type date}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each [VisitDate] > #date(2023, 12, 18))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+
