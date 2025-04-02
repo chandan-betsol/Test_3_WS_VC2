@@ -1,0 +1,144 @@
+table vwEncounter
+	lineageTag: 27ff606a-9f72-4b7c-b1f2-a2c377080c73
+
+	column EncounterID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f4e9779-2dc9-465f-974b-0694674a63f6
+		summarizeBy: count
+		sourceColumn: EncounterID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PracticeID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 88e3f0cb-31fc-4f54-a563-e75a09e9ed37
+		summarizeBy: none
+		sourceColumn: PracticeID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column PatientID
+		dataType: int64
+		formatString: 0
+		lineageTag: 32ca04a2-d3db-4502-a005-814a31548242
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		annotation SummarizationSetBy = User
+
+	column PatientAppID
+		dataType: int64
+		formatString: 0
+		lineageTag: 70129035-dda6-4e82-8819-31a3a44e27ab
+		summarizeBy: count
+		sourceColumn: PatientAppID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: b7f4fb57-fe4b-4c99-9caa-900100c0d1c6
+		summarizeBy: none
+		sourceColumn: EncounterTypeID
+
+		annotation SummarizationSetBy = User
+
+	column EncounterDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 740a6942-e456-4522-aa77-c155b61d9928
+		summarizeBy: none
+		sourceColumn: EncounterDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column FacilityID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9d492dcc-c0f0-47c1-bf1c-d1acae05b737
+		summarizeBy: count
+		sourceColumn: FacilityID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhysicianID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ba284ec1-c0a2-4fbe-b624-5e0286e576b0
+		summarizeBy: none
+		sourceColumn: PhysicianID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoteClosedDateTime
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 24b2e538-c34e-4db7-9cac-7283df58d89d
+		summarizeBy: none
+		sourceColumn: NoteClosedDateTime
+
+		variation Variation
+			isDefault
+			relationship: 5fd7b8b6-62ef-4d13-b84c-40ca7abb6363
+			defaultHierarchy: LocalDateTable_522031c5-ccb0-4890-8fd2-57c8cc8ba9e1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column BillingProviderID
+		dataType: int64
+		formatString: 0
+		lineageTag: f191dbff-68b3-4a5b-a2e3-9c3b2df24902
+		summarizeBy: count
+		sourceColumn: BillingProviderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0cae1573-607e-4e07-9377-e18eb2d352ad
+		summarizeBy: none
+		sourceColumn: VisitDate
+
+		variation Variation
+			isDefault
+			relationship: 76797d90-57f2-4881-89ed-710d9583f8d8
+			defaultHierarchy: LocalDateTable_1e9760f8-8515-41ec-9ba4-7535c1cdddbb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition vwEncounter-c2fe0026-0400-425c-a194-74921db06384 = m
+		mode: import
+		queryGroup: FACT
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwEncounter = Source{[Schema="dbo",Item="vwEncounter"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwEncounter,{{"EncounterID", Int64.Type}, {"PracticeID", Int64.Type}, {"PatientID", Int64.Type}, {"PatientAppID", Int64.Type}, {"EncounterTypeID", Int64.Type}, {"EncounterDate", type date}, {"FacilityID", Int64.Type}, {"PhysicianID", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

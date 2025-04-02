@@ -1,0 +1,72 @@
+table cfgAccountingReport
+	lineageTag: f1a5a095-e2b4-40af-834f-d3ee60c49761
+
+	column ACCOUNTNO
+		dataType: int64
+		formatString: 0
+		lineageTag: a85d6f69-2354-4275-950c-d775cb31f789
+		summarizeBy: none
+		sourceColumn: ACCOUNTNO
+
+		annotation SummarizationSetBy = Automatic
+
+	column TITLE
+		dataType: string
+		lineageTag: ca333ad1-9b1a-4efe-a037-5e525484704f
+		summarizeBy: none
+		sourceColumn: TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PNL_BUDGET_ACTUAL_ACCT_SORT
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bf076ce-a4c6-488d-964b-2c13756677c4
+		summarizeBy: none
+		sourceColumn: PNL_BUDGET_ACTUAL_ACCT_SORT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PNL_BUDGET_ACTUAL_GRP_SORT
+		dataType: int64
+		formatString: 0
+		lineageTag: 914c4a32-ca83-42d7-a56c-736615fef8a6
+		summarizeBy: none
+		sourceColumn: PNL_BUDGET_ACTUAL_GRP_SORT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PNL_BUDGET_ACTUAL_PARENT
+		dataType: string
+		lineageTag: 031ede81-db61-4659-874b-bc498c680685
+		summarizeBy: none
+		sourceColumn: PNL_BUDGET_ACTUAL_PARENT
+		sortByColumn: PNL_BUDGET_ACTUAL_GRP_SORT
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountNbrTitle
+		dataType: string
+		lineageTag: 36a0d10f-815b-4cf4-91a7-47863c731e0e
+		summarizeBy: none
+		sourceColumn: AccountNbrTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cfgAccountingReport = m
+		mode: import
+		queryGroup: 'FACT\Account Details'
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    SAG_cfgAccountingReport = Source{[Schema="SAG",Item="cfgAccountingReport"]}[Data],
+				    #"Duplicated Column" = Table.DuplicateColumn(SAG_cfgAccountingReport, "ACCOUNTNO", "ACCOUNTNO - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "TITLE", "TITLE - Copy"),
+				    #"Merged Columns" = Table.CombineColumns(Table.TransformColumnTypes(#"Duplicated Column1", {{"ACCOUNTNO - Copy", type text}}, "en-US"),{"ACCOUNTNO - Copy", "TITLE - Copy"},Combiner.CombineTextByDelimiter(" - ", QuoteStyle.None),"AccountNbrTitle")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_ResultType = Exception
+

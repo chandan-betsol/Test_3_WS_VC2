@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CollectiveBH - Model Test VC"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "63ff849a-9b83-a02e-428d-9633dd5fa815"
+  }
+}

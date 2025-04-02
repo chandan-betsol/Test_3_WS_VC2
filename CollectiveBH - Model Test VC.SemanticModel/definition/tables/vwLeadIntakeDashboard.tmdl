@@ -1,0 +1,136 @@
+table vwLeadIntakeDashboard
+	lineageTag: 13b6d24f-1b2f-454e-9b9a-5c0fb5a514a6
+
+	column FacilityId
+		dataType: int64
+		formatString: 0
+		lineageTag: c5ef74d0-a7d8-4b11-a389-e422f4e07ee7
+		summarizeBy: none
+		sourceColumn: FacilityId
+
+		annotation SummarizationSetBy = User
+
+	column FacilityName
+		dataType: string
+		lineageTag: d9039807-34c3-4045-918d-6c1e6c0b79b1
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 0400bd60-7255-43c3-a49d-5b6fd55b8004
+		summarizeBy: none
+		sourceColumn: MonthDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column DayOfWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: a9577335-7679-475a-aebf-5c4c5bb43438
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+		annotation SummarizationSetBy = User
+
+	column WeekDayWeight
+		dataType: double
+		lineageTag: 42c5cda5-e9d6-42c4-9ea9-dc7979939372
+		summarizeBy: none
+		sourceColumn: WeekDayWeight
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MtdCumWeight
+		dataType: double
+		lineageTag: 3ddb3f3a-3089-4836-8d83-7ea377cf5263
+		summarizeBy: sum
+		sourceColumn: MtdCumWeight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LeadsReqd
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bb0f780-ffc6-4f51-9f86-034f5ddac597
+		summarizeBy: sum
+		sourceColumn: LeadsReqd
+
+		annotation SummarizationSetBy = Automatic
+
+	column IntakesReqd
+		dataType: int64
+		formatString: 0
+		lineageTag: ebdfdb6c-97e1-46e8-b186-75ad2381bc17
+		summarizeBy: sum
+		sourceColumn: IntakesReqd
+
+		annotation SummarizationSetBy = Automatic
+
+	column DailyLeadsReqd
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ab7d479-f798-4890-8d41-b71ebcb5250d
+		summarizeBy: sum
+		sourceColumn: DailyLeadsReqd
+
+		annotation SummarizationSetBy = Automatic
+
+	column DailyIntakesReqd
+		dataType: int64
+		formatString: 0
+		lineageTag: 831e1be3-4859-4853-97ad-f2a5792bc273
+		summarizeBy: sum
+		sourceColumn: DailyIntakesReqd
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumLeads
+		dataType: int64
+		formatString: 0
+		lineageTag: a1990555-7a4e-490a-82b0-567d1017e366
+		summarizeBy: sum
+		sourceColumn: NumLeads
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumIntakes
+		dataType: int64
+		formatString: 0
+		lineageTag: d9720c25-cd66-4c93-946f-15414eeabe75
+		summarizeBy: sum
+		sourceColumn: NumIntakes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 1daf2027-50e8-4cc1-b472-ce369648c3a1
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwLeadIntakeDashboard-27163a93-7e51-4836-bc49-3080da31dfc3 = m
+		mode: import
+		queryGroup: 'FACT\Leads Intake'
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    dbo_vwLeadIntakeDashboard = Source{[Schema="dbo",Item="vwLeadIntakeDashboard"]}[Data]
+				in
+				    dbo_vwLeadIntakeDashboard
+
+	annotation PBI_ResultType = Exception
+

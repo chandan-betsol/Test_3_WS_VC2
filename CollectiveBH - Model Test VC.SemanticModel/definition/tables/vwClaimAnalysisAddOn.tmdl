@@ -1,0 +1,98 @@
+table vwClaimAnalysisAddOn
+	lineageTag: 89146f24-f5e7-41c1-b68c-8101b01f1df9
+
+	column EncounterID
+		dataType: int64
+		formatString: 0
+		lineageTag: 02b3959d-5ab1-4e45-b752-288fed44ad37
+		summarizeBy: count
+		sourceColumn: EncounterID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e653260-ac06-4453-befa-7267ce3d3e37
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		annotation SummarizationSetBy = User
+
+	column FacilityID
+		dataType: int64
+		formatString: 0
+		lineageTag: d77dfb02-9848-456f-ba58-e0d5d839cda7
+		summarizeBy: none
+		sourceColumn: FacilityID
+
+		annotation SummarizationSetBy = User
+
+	column EncounterDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: b3dec230-0f8f-42e4-aa76-cd0fca872220
+		summarizeBy: none
+		sourceColumn: EncounterDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column visitType
+		dataType: string
+		lineageTag: 914f27bd-47b8-4540-8ad8-315d77f4c621
+		summarizeBy: none
+		sourceColumn: visitType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: d92b9e45-324d-4d4c-b2e1-4cb53f878f62
+		summarizeBy: sum
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column PsyAddOn
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ed3adc2-7095-487f-9560-13a0db926053
+		summarizeBy: sum
+		sourceColumn: PsyAddOn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategory
+		dataType: string
+		lineageTag: d32fd312-e6c5-4cd0-8b05-9b4279d620fa
+		summarizeBy: none
+		sourceColumn: ProviderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServiceProviderID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1090675c-a520-453a-b957-c54bc1ec1f8d
+		summarizeBy: count
+		sourceColumn: ServiceProviderID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwClaimAnalysisAddOn-151af2f7-9518-4616-835c-1083d5b412c8 = m
+		mode: import
+		queryGroup: Settings
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    dbo_vwClaimAnalysisAddOn = Source{[Schema="dbo",Item="vwClaimAnalysisAddOn"]}[Data]
+				in
+				    dbo_vwClaimAnalysisAddOn
+
+	annotation PBI_ResultType = Exception
+

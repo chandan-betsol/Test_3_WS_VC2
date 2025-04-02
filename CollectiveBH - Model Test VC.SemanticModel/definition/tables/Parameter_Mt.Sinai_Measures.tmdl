@@ -1,0 +1,49 @@
+table 'Parameter_Mt.Sinai_Measures'
+	lineageTag: 939c61fb-e0af-48ed-b503-fa5dfa972a12
+
+	column 'Parameter_Mt.Sinai_Measures'
+		lineageTag: 50f6b7e6-4d02-48c8-a890-2acb59f333d6
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter_Mt.Sinai_Measures Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter_Mt.Sinai_Measures Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_Mt.Sinai_Measures Fields'
+		isHidden
+		lineageTag: fc648446-ada2-4d6b-91b2-38bcc3dad4b7
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter_Mt.Sinai_Measures Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_Mt.Sinai_Measures Order'
+		isHidden
+		formatString: 0
+		lineageTag: 79fe4619-a206-49d9-b3b5-06c23ec4a76b
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Parameter_Mt.Sinai_Measures' = calculated
+		mode: import
+		source =
+				{
+				    ("Referrals", NAMEOF('Measures - model'[# Leads]), 0),
+				    ("Scheduled appointments", NAMEOF('Measures - model'[# Converted_Full]), 1),
+				    ("Completed appointments", NAMEOF('Measures - model'[# Completed]), 2)
+				}
+
+	annotation PBI_Id = c0d1e553ea75443ab7d461dc77cb981f
+
