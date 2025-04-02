@@ -1,0 +1,208 @@
+table vwConvNotCplt
+	lineageTag: ca7c509d-8535-44e5-b764-46691b7e9483
+
+	column FirstName
+		dataType: string
+		lineageTag: b476920f-5361-43cc-ac37-6c12b4933448
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: b6730fc4-a6a1-4426-aba4-3bdf74bc1afc
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompletionStatus
+		dataType: string
+		lineageTag: baa07163-1db3-4211-8934-bc4d411a7ec3
+		summarizeBy: none
+		sourceColumn: CompletionStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column InquiryDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 6a6e159b-4d49-454a-b79d-720eaf105999
+		summarizeBy: none
+		sourceColumn: InquiryDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column DaysToFirstVisit
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bec2028-f5ef-40ec-861f-9bfb62db4691
+		summarizeBy: sum
+		sourceColumn: DaysToFirstVisit
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstVisitStatus
+		dataType: string
+		lineageTag: f5a11586-dbc4-44c6-a09b-6bb1cefc477d
+		summarizeBy: none
+		sourceColumn: FirstVisitStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstApptCompleted
+		dataType: string
+		lineageTag: 1b4200c0-081f-412e-a89a-6bf03e63fdc9
+		summarizeBy: none
+		sourceColumn: FirstApptCompleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateConverted
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 72373a3d-487d-48f6-bf41-3007d664f64b
+		summarizeBy: none
+		sourceColumn: DateConverted
+
+		variation Variation
+			isDefault
+			relationship: bee2b9cb-8af4-47e4-98cb-398008470a36
+			defaultHierarchy: LocalDateTable_feda2414-2453-4fc4-8766-ab2381f74d80.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column FirstVisitDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 462c90ea-e20f-479a-a6a2-838114cc981d
+		summarizeBy: none
+		sourceColumn: FirstVisitDate
+
+		variation Variation
+			isDefault
+			relationship: a2e486c2-f39a-42d4-9d4d-8693611c6cc3
+			defaultHierarchy: LocalDateTable_e6a7d6b2-0095-4c08-ba3a-65fb5e216cbc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Modality
+		dataType: string
+		lineageTag: 485d8c3b-7eb7-488d-8e19-01d9890c0853
+		summarizeBy: none
+		sourceColumn: Modality
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientEmail
+		dataType: string
+		lineageTag: ba588562-2283-474d-bc58-e20bbfb5489c
+		summarizeBy: none
+		sourceColumn: PatientEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatMobile
+		dataType: string
+		lineageTag: c82743ca-b446-444b-bc36-8d7bf13fd2a2
+		summarizeBy: none
+		sourceColumn: PatMobile
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRNNumber
+		dataType: string
+		lineageTag: d040db41-3836-4e42-848e-f15d24dc6c4c
+		summarizeBy: none
+		sourceColumn: MRNNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column RecordID
+		dataType: string
+		lineageTag: 7b565914-d53a-47cf-af1d-25f012c149c5
+		summarizeBy: none
+		sourceColumn: RecordID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: 324e74d6-0605-4233-9ed8-7571d8fc44b4
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 0d258e29-1cb1-4a68-9305-f2aa04d228d0
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrganizationName
+		dataType: string
+		lineageTag: e71d75d3-af9a-4cfa-81ea-4a246e586e01
+		summarizeBy: none
+		sourceColumn: OrganizationName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentOrg
+		dataType: string
+		lineageTag: f0f96cb3-8c11-4daa-967b-503586554fb3
+		summarizeBy: none
+		sourceColumn: ParentOrg
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clinician
+		dataType: string
+		lineageTag: adffa8da-645c-4fac-878d-1e3d5f36240a
+		summarizeBy: none
+		sourceColumn: Clinician
+
+		annotation SummarizationSetBy = Automatic
+
+	column NextSchedVisitDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 079bc442-ca43-4c44-87eb-ddfcdbb48ac4
+		summarizeBy: none
+		sourceColumn: NextSchedVisitDate
+
+		variation Variation
+			isDefault
+			relationship: 47dd032a-107f-45d1-8b94-4f9f7aa1923f
+			defaultHierarchy: LocalDateTable_bbadbda3-51c7-4bf0-b7c6-cf1e45e2f16b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition vwConvNotCplt = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    SFO_vwConvNotCplt = Source{[Schema="SFO",Item="vwConvNotCplt"]}[Data]
+				in
+				    SFO_vwConvNotCplt
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

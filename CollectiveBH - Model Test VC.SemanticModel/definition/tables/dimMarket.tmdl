@@ -1,0 +1,23 @@
+table dimMarket
+	lineageTag: ee13e753-0087-4f4a-80eb-91bfd7e12cdc
+
+	column Market
+		dataType: string
+		lineageTag: e68b30b8-89c3-408c-833d-e1b27ad9c428
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimMarket-24f328db-fbd3-4427-a0f5-f45c048d25fd = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    dbo_dimMarket = Source{[Schema="dbo",Item="dimMarket"]}[Data]
+				in
+				    dbo_dimMarket
+
+	annotation PBI_ResultType = Table
+

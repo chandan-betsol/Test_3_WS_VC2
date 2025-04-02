@@ -1,0 +1,125 @@
+table vwProviderPatientBalance
+	lineageTag: 9151e0b3-3a72-4155-a5c0-867ae0983f87
+
+	column InSyncProv
+		dataType: string
+		lineageTag: 2069c5d9-4fde-460d-939f-4a60ac105559
+		summarizeBy: none
+		sourceColumn: InSyncProv
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitStatus
+		dataType: string
+		lineageTag: cf182640-256f-4eb6-886d-3f49c3e27b9e
+		summarizeBy: none
+		sourceColumn: VisitStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: ac162c74-fc73-4b13-8253-035214a36ec4
+		summarizeBy: none
+		sourceColumn: VisitStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRNNumber
+		dataType: string
+		lineageTag: 0b20ade3-2f6d-4cb9-bc50-12e5fefffbdf
+		summarizeBy: none
+		sourceColumn: MRNNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column InSyncPatName
+		dataType: string
+		lineageTag: d75f6dc1-3032-4250-ad64-be311ffa6542
+		summarizeBy: none
+		sourceColumn: InSyncPatName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CardOnFile
+		dataType: string
+		lineageTag: 0585d65d-b032-408b-803f-4c9d92c06f32
+		summarizeBy: none
+		sourceColumn: CardOnFile
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: 086109aa-0858-4b4e-8f0a-8a4f690e4ca0
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: b02a196f-cf08-4278-8ae8-ed17add61b66
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: f0f3a5f1-f77a-4839-acf9-ee2e48ab503a
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastCompletedVisitDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 1387bb97-4e65-4d15-b5bf-cd60c83e9930
+		summarizeBy: none
+		sourceColumn: LastCompletedVisitDate
+
+		variation Variation
+			isDefault
+			relationship: 068c2d6e-bd92-4696-89c5-37e22571532c
+			defaultHierarchy: LocalDateTable_2f76bdca-01b0-4036-afcc-67e073bc0ff8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column NextSchedVisitDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 81154261-f309-42d8-ad97-d2bd052d443c
+		summarizeBy: none
+		sourceColumn: NextSchedVisitDate
+
+		variation Variation
+			isDefault
+			relationship: 15ab6019-729c-443d-ac70-4a4e78de6e49
+			defaultHierarchy: LocalDateTable_aa71a330-841b-45bf-8471-af14859f0ef9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition vwProviderPatientBalance = m
+		mode: import
+		queryGroup: Settings
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwProviderPatientBalance = Source{[Schema="dbo",Item="vwProviderPatientBalance"]}[Data]
+				in
+				    dbo_vwProviderPatientBalance
+
+	annotation PBI_ResultType = Exception
+

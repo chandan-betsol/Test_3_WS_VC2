@@ -1,0 +1,109 @@
+table vwCopay
+	lineageTag: 3c3cc033-7621-4c32-a215-3db9fc6b5ec4
+
+	measure '__Collected Copay' = SUM(vwCopay[CollectedCopay])
+		lineageTag: 4baab341-8a93-4b81-a9c0-e79ab7b0e710
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Expected Copay' = SUM(vwCopay[ExpectedCopay])
+		lineageTag: 6d88fa34-d0cb-49f8-b689-7f447e398408
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure __CountrowsVwCopay = COUNTROWS(vwCopay)
+		formatString: #,0
+		lineageTag: 1c782756-46fb-4f9f-8e78-a436ba908f48
+
+	column Market
+		dataType: string
+		lineageTag: 08f28d79-2b9f-4a49-a315-48cea3f5958c
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: f288f6c6-9cda-4acf-a614-8cc99b1689d2
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3cbffe60-109a-4ac2-be5c-f73fa71486e0
+		summarizeBy: none
+		sourceColumn: VisitDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MRNNumber
+		dataType: string
+		lineageTag: 1a1b7850-37a4-41ab-bb79-decbfc7a1e8a
+		summarizeBy: none
+		sourceColumn: MRNNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PayerName
+		dataType: string
+		lineageTag: 525120c9-bae5-4c2f-b2df-1c192502bca3
+		summarizeBy: none
+		sourceColumn: PayerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpectedCopay
+		dataType: double
+		isHidden
+		formatString: 0.00
+		lineageTag: 5e9dea0c-6765-4a15-97fb-919d960f9952
+		summarizeBy: sum
+		sourceColumn: ExpectedCopay
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CollectedCopay
+		dataType: double
+		isHidden
+		formatString: 0.00
+		lineageTag: d6240dbb-85c8-4672-ad21-5ccdee8c6b74
+		summarizeBy: sum
+		sourceColumn: CollectedCopay
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Satus = ```
+			
+			IF(
+			    [__Collected Copay] < [__Expected Copay], 
+			    "Not Collected", 
+			    "Collected"
+			)
+			```
+		lineageTag: cf2c7343-3e27-4359-8c35-63da186a910e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwCopay = m
+		mode: import
+		queryGroup: FACT\DailyOps
+		source =
+				let
+				    Source = #"vwCopay - raw",
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"VisitDate", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

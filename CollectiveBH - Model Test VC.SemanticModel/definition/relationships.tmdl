@@ -1,0 +1,1093 @@
+relationship 0d5b50cb-b2b8-4bba-9566-8a7c592b2b2b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cfgWeekDays.StartWeek
+	toColumn: LocalDateTable_b44fa645-b579-48d9-8d5f-5b5a14bdcc25.Date
+
+relationship aadc0d6d-2c50-45ee-a8bb-38edfc6b9509
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cfgWeekDays.EndWeek
+	toColumn: LocalDateTable_f87430c1-52e4-465f-97fb-74d68d118cb5.Date
+
+relationship 8b0845b4-a554-4cc4-b006-461c47c563cc
+	fromColumn: vwEncounter.PhysicianID
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 178c71e7-bc11-43b8-9a81-ac68a36fe727
+	isActive: false
+	fromColumn: vwEncounter.PatientAppID
+	toColumn: vwScheduleVisitDetails.VisitID
+
+relationship cc86c029-8a5e-4428-b502-0c83ac74fc01
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwScheduleVisitDetails.NextAppt
+	toColumn: LocalDateTable_8c5ca60d-1872-4e95-97ab-d39d2ed8d530.Date
+
+relationship ce6f58f4-9024-4ae5-9e8a-426c0dd049b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwScheduleVisitDetails.PrevAppt
+	toColumn: LocalDateTable_3b0168d4-bd1e-4736-b7c9-f3f92be9c971.Date
+
+relationship 5d907d15-b649-45fc-b759-e9ff90f2aebb
+	fromColumn: vwScheduleVisitDetails.ResourceID
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 9728fdf4-6e7a-48c2-93fc-3f8f2bc864a6
+	isActive: false
+	fromColumn: vwSummaryUtilizationByResource.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship 5dda96c7-a890-408f-8b01-a613247bf573
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwSummaryUtilizationByResource.StartWeek
+	toColumn: LocalDateTable_bf0329ad-b435-46b2-a9f8-de0bef56de3f.Date
+
+relationship 5fe3d497-7b88-47b9-9f89-92cafa412279
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwSummaryUtilizationByResource.EndWeek
+	toColumn: LocalDateTable_200cebd6-6d5a-4345-abbf-eafa221567c2.Date
+
+relationship c804f0cf-474b-4ead-b852-c5a9a9160990
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwSummaryUtilSchdByResource.StartWeek
+	toColumn: LocalDateTable_ff2c886f-5afc-47c4-8fa9-558a38cfa664.Date
+
+relationship f06faa6b-ff3d-4849-b17a-206b819e82bd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwSummaryUtilSchdByResource.EndWeek
+	toColumn: LocalDateTable_2c5f47a5-761c-43a7-bccf-830803fd484f.Date
+
+relationship f4a618c4-4557-4d2c-86e8-18a1cc4aa95e
+	isActive: false
+	fromColumn: vwSummaryUtilSchdByResource.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship bb6705bb-b609-45b9-aa5f-efe6d0c5f99c
+	fromColumn: vwSummaryUtilSchdByResource.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship f22fe310-c6f5-4e32-91ca-9045bb5011df
+	fromColumn: vwScheduleVisitDetails.VisitStatusID
+	toColumn: vwVisitStatus.VisitStatusID
+
+relationship c27f9e3a-f19f-4aae-b6e1-811bc6b6c8ac
+	fromColumn: vwEncounter.EncounterTypeID
+	toColumn: vwEncounterType.EncounterTypeID
+
+relationship 92d53236-829c-4f01-9837-32b896f4df59
+	fromColumn: vwScheduleVisitDetails.VisitTypeID
+	toColumn: vwEncounterType.EncounterTypeID
+
+relationship aeeaaa37-35f2-47af-8cbc-bc6ffa098c61
+	joinOnDateBehavior: datePartOnly
+	fromColumn: z_RefreshDate.'Fecha.'
+	toColumn: LocalDateTable_79c08bc8-df19-4a6c-ada2-0a1fa59bc1e3.Date
+
+relationship 37d3ee08-b703-48af-9b61-894906773cef
+	fromColumn: vwSummaryUtilizationByResource.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship ac63bdc6-c9e7-4b38-a704-4548cf3f3367
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwProviderCaseLoad.WeekEnd
+	toColumn: LocalDateTable_302c2acc-1e37-4cfb-afd4-d9cb0aa66d6a.Date
+
+relationship 619f619f-b1fa-472a-8431-084d57a13ce3
+	fromColumn: cfgDailyBudget.FacilityId
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 954a8320-3296-40b0-90e5-078497452a45
+	fromColumn: cfgProvSched.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship ce1d7b13-a7b6-4b79-847a-03aef639ce32
+	crossFilteringBehavior: bothDirections
+	fromColumn: vwResourceDetails.ProviderCategoryID
+	toColumn: vwProviderCategory.ProviderCategoryID
+
+relationship fe9fa998-a776-48e0-af89-86db2d8bb9e0
+	isActive: false
+	fromColumn: cfgDailyBudget.ProviderCategory
+	toColumn: vwProviderCategory.ProviderCategory
+
+relationship 00ae0f6c-29df-4514-aa55-835a19fdd13e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwChargeMasterExtended.PostingDate
+	toColumn: LocalDateTable_aefebb1c-69ba-41b7-9d7d-3c6efe878dcc.Date
+
+relationship d4b120b6-06c3-4ee3-9fc9-9f66f48f56f5
+	isActive: false
+	fromColumn: vwChargeMasterExtended.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 0017e7c9-2e64-470d-ac00-f5ed58ef5244
+	fromColumn: vwChargeMasterExtended.ProviderCategoryID
+	toColumn: vwProviderCategory.ProviderCategoryID
+
+relationship 0f0657ca-3ca6-451f-9875-06a97039508f
+	isActive: false
+	fromColumn: vwChargeMasterExtended.EncounterID
+	toColumn: vwEncounter.EncounterID
+
+relationship 4c322056-752f-415e-9687-60a96db63108
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwResourceDetails.LastLoginDate
+	toColumn: LocalDateTable_b5dff20c-6a94-4fc7-a314-22961c5473aa.Date
+
+relationship 5c91ed44-f3f1-4c81-838d-9f31183e70cc
+	fromColumn: vwFacilitiesMaster.Market
+	toColumn: dimMarket.Market
+
+relationship 7b30c7a5-5b41-4d48-91b6-7d138695e82b
+	fromColumn: vwDailySales.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 32bc8746-1461-4106-ab37-483536752d3c
+	fromColumn: vwProviderCaseLoad.resourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 8c2c94b3-7a8a-4185-8d4e-dcff1f16bc87
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveAccount.InquiryDate
+	toColumn: LocalDateTable_2c83575c-0b61-4faa-89e9-f24e773dc55a.Date
+
+relationship 91ec1258-56c2-4d81-a720-0e22a0caa86f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveAccount.DateConverted
+	toColumn: LocalDateTable_d87e9547-f38f-4db0-b08c-acc33d130a9a.Date
+
+relationship 328d2de4-c75f-4e16-9af2-7b40b8d24bdb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLifetimeValue.TherapyIntakeDate
+	toColumn: LocalDateTable_1407ea7a-c7b3-4394-bf0f-9e1b549ad59e.Date
+
+relationship 009565b2-e052-42a5-9b11-1a9bfe77362f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLifetimeValue.PsychIntakeDate
+	toColumn: LocalDateTable_3aad88fb-cdde-4f72-803e-c9d227766630.Date
+
+relationship 0b3a6535-39f3-4150-b45e-3229605ea2b9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLifetimeValue.LastCompletedVisitDate
+	toColumn: LocalDateTable_8899c7db-e4a7-46fd-bc7d-f470c1937f61.Date
+
+relationship 9c7d53a7-bd0c-4585-9968-9a9212bea1ec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLifetimeValue.NextSchedVisitDate
+	toColumn: LocalDateTable_a09d4043-6db8-4543-8ce8-95c3e3063054.Date
+
+relationship 5faad900-368c-4f41-8bbf-ce2db4e1e9aa
+	fromColumn: vwCollectiveAccount.InsyncPatientID
+	toColumn: vwLifetimeValue.PatientId
+
+relationship 0f5395da-b6bc-4cf5-a2b5-9f2c89399ceb
+	fromColumn: vwDailySalesCombined.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 5fd7b8b6-62ef-4d13-b84c-40ca7abb6363
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwEncounter.NoteClosedDateTime
+	toColumn: LocalDateTable_522031c5-ccb0-4890-8fd2-57c8cc8ba9e1.Date
+
+relationship d288ac87-9756-4bf7-9598-a152d1060fac
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwChargeMasterExtended.ClaimDate
+	toColumn: LocalDateTable_5f4144c6-8273-4a47-bd15-c0f9ceae8d6e.Date
+
+relationship 2d8d7e73-2d3f-4e6c-9eb8-1c51f85492f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwChargeMasterExtended.EncounterDate
+	toColumn: LocalDateTable_f94fee28-68be-4909-909c-deed7f43c4e5.Date
+
+relationship 08ac7272-e2f8-4024-8177-f9b78ab67f0b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLifetimeValue.FirstCompletedVisitDate
+	toColumn: LocalDateTable_edbdfeb9-a79a-417f-9a73-de07dda495ae.Date
+
+relationship c262940a-3e4d-4fda-8122-94e187ab3d33
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.InquiryDate
+	toColumn: LocalDateTable_b846f930-3678-4e0c-aaad-b722675b86f4.Date
+
+relationship 92661064-d9fd-4a05-bd35-864525d38a2b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.DateConverted
+	toColumn: LocalDateTable_a4d5b12d-1bd2-42e7-8445-004c47dd7f08.Date
+
+relationship 87d6bbf4-05af-4a94-882e-52321828a903
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.TherapyIntakeDate
+	toColumn: LocalDateTable_08efec1e-ac3d-4916-b7d6-cb30aaf533dc.Date
+
+relationship 2b48c846-a79e-4bd3-88e9-38018203fc8f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.PsychIntakeDate
+	toColumn: LocalDateTable_f35620f6-1ebf-4b45-ae43-f393ff5a3fe2.Date
+
+relationship a58b9711-a21d-4b31-a0c4-9109585ac3b5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.FirstCompletedVisitDate
+	toColumn: LocalDateTable_c13811bc-4107-4309-9d7b-efc2e065916f.Date
+
+relationship be133380-32d6-43b9-b1fd-bdbb5bb466d1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.LastCompletedVisitDate
+	toColumn: LocalDateTable_65c472c1-e783-4a20-a4f3-f6f20920c114.Date
+
+relationship f1e99890-4a85-450b-9d34-01ff24190cc8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.NextSchedVisitDate
+	toColumn: LocalDateTable_f3c048a4-61c4-47c8-8527-0d5a900997ba.Date
+
+relationship 818b4fbe-e39e-451c-81d9-45a29d64a9cf
+	crossFilteringBehavior: bothDirections
+	fromColumn: vwResourceDetails.PreferredFacility
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship cd424b34-168e-40e5-b4a9-5cefe2f6b188
+	fromColumn: vwSummaryUtilSchdByResource.VisitStatusID
+	toColumn: vwVisitStatus.VisitStatusID
+
+relationship ca07cc54-df08-42dd-82e5-61212e453247
+	isActive: false
+	fromColumn: cfgDailyBudget.Market
+	toColumn: dimMarket.Market
+
+relationship bb5b070a-f671-4398-8cd5-4b09a820a1e4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwSumPaymentDetailExtended.ClaimDate
+	toColumn: LocalDateTable_17799199-c310-4dbb-9b1d-d70f09b4f5da.Date
+
+relationship c2a0a027-c95c-480c-a7a8-3806afaf4d63
+	fromColumn: vwSumPaymentDetailExtended.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 948c4c7d-147b-4da4-b8bb-4479fe0586d7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwMktgwithLTV.FirstAnyVisitDate
+	toColumn: LocalDateTable_aed25d59-9d95-49c0-8a36-858e7cf5c3b7.Date
+
+relationship 083ab524-eb7e-4c7c-8ca8-b8a35d77c843
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cfgProvSched.HireDate
+	toColumn: LocalDateTable_c1c005c6-18e2-4466-8eba-d366f3958651.Date
+
+relationship 2307aafa-9283-4f79-9ee1-46280fc4aaab
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwClinicalAnalytics.DOB
+	toColumn: LocalDateTable_d6d2cdb8-6742-4fd9-bf7e-44a0520ffc66.Date
+
+relationship 8e082171-13d0-4911-bb9d-44f6e3eb181b
+	fromColumn: vwLeadActivity.Facility
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship bbb0bdea-6b0c-4461-87b2-8f6520d1fbbd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLeadActivity.LeadDate
+	toColumn: LocalDateTable_dfeba114-6c66-4cd7-bc76-57868ba64e14.Date
+
+relationship 2c3648a4-cd24-42a1-a471-cce39a1384a3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLeadActivity.ActivityDate
+	toColumn: LocalDateTable_b30895b8-eb48-44b7-9c7f-38e385a0f7b8.Date
+
+relationship 6b051e44-4520-4ec3-8d9e-157038b401e7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'z_RefreshDate (UTC)'.'Fecha.'
+	toColumn: LocalDateTable_ac9c6940-2561-4df7-82b9-34ab72415cc1.Date
+
+relationship df416ba9-4764-45e0-9e37-20a256407521
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwScheduleVisitDetails.StartTime
+	toColumn: LocalDateTable_bb857195-c4ac-4c95-97dc-20ee7b964c3c.Date
+
+relationship 4a14e0d6-209f-4116-98a5-25e2670dd660
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwScheduleVisitDetails.EndTime
+	toColumn: LocalDateTable_b86f3cd3-84b3-46cb-9bad-2451e3aa1b7a.Date
+
+relationship c44f7e2c-f5bd-4fba-b245-827a61e89a06
+	fromColumn: vwClinicalAnalytics.Market
+	toColumn: dimMarket.Market
+
+relationship 7fee2ac5-0277-4e05-9afb-cb8de0761764
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwProviderSchedule.Start
+	toColumn: LocalDateTable_c0cd688f-ee4a-47f8-ac60-0d68d9390e33.Date
+
+relationship 4459e40d-49ee-4a15-a71c-60ee0fe13980
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwProviderSchedule.End
+	toColumn: LocalDateTable_bd03886a-904f-415d-ba6b-afc56778763d.Date
+
+relationship 98e707e5-897a-4180-8f9b-ff4f945a92c7
+	fromColumn: vwProviderSchedule.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 47896fab-a199-4269-9ee9-aedc9b04080c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLeadActivity.LeadDatetime
+	toColumn: LocalDateTable_1f56a6c2-a889-488c-94ba-e7aaba61a924.Date
+
+relationship 45640062-1d50-43db-bfc1-79bc0a6d09b1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLeadActivity.ActivityDatetime
+	toColumn: LocalDateTable_dfe344d5-cfbf-4b47-9cb9-f6e944c04e13.Date
+
+relationship f469465a-6d76-41d8-9c29-9b67fbdf98fa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'vwLeadActivity - FirstActivityDate'.MinLeadDate
+	toColumn: LocalDateTable_68ca62f3-fa6b-4cc2-a0ed-4b760461f6bc.Date
+
+relationship 35e6ed8c-267a-427c-99c9-d007cb148d77
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'vwLeadActivity - FirstActivityDate'.MinActivityDate
+	toColumn: LocalDateTable_7dd9fa8d-e6ab-4fd0-b486-f215b89fc943.Date
+
+relationship f512f39a-c310-409d-b3a7-b887d6258478
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLeadActivity.LeadDateNew
+	toColumn: LocalDateTable_a1d0b943-1468-4831-bf97-f5c55841d1d4.Date
+
+relationship e2d1d188-7546-4ad8-9698-7842bc07c78f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLeadActivity.'Lead Date Time'
+	toColumn: LocalDateTable_68e8925b-2dc0-441e-a4b2-8eed9236e98d.Date
+
+relationship 5d5dc511-6e93-47eb-bbab-7d37e8a60557
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwLeadActivity.'Activity Date Time'
+	toColumn: LocalDateTable_0c430ed8-6d72-4bb8-96da-13d0d4233cff.Date
+
+relationship 002cb5ba-94ea-4871-87c2-e7510c5130b4
+	fromColumn: vwLeadActivity.recordId
+	toColumn: 'vwLeadActivity - FirstActivityDate'.recordId
+
+relationship 8b83a422-fe19-44a2-aa28-6e3d1a09463d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwAccountDetails.PeriodStart
+	toColumn: LocalDateTable_33eba6bf-6b9e-4ed9-a6a4-ab04067fd01c.Date
+
+relationship b7cc0b63-44d9-40fd-a07a-72c3db9d7d51
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwAccountDetails.PeriodEnd
+	toColumn: LocalDateTable_686ed358-3375-433c-ab3e-b60e863b79b7.Date
+
+relationship 2c883829-7bec-41bd-9d35-89532c08dfdc
+	crossFilteringBehavior: bothDirections
+	fromColumn: vwAccountDetails.ACCOUNTNO
+	toColumn: cfgAccountingReport.ACCOUNTNO
+
+relationship bb45b540-f9aa-49c7-94d6-a6a44ec9b7fa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cfgRevenueVisits.FromDate
+	toColumn: LocalDateTable_75607ea8-abcb-4c89-9cc9-85cc1d33e64a.Date
+
+relationship 830f0e27-658a-4a80-832c-e769ad93f03b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cfgRevenueVisits.ThruDate
+	toColumn: LocalDateTable_e25997e3-a06d-4e55-9dee-6e8cd7e7c438.Date
+
+relationship c90db298-7e3c-4d21-a376-57d3577e3ea5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dimDate_ResourceDetails.Date
+	toColumn: LocalDateTable_77aaee5b-85dc-441c-b84d-29c50236cb78.Date
+
+relationship c3d18725-5b1a-4d57-8d05-b7a2496ed1f5
+	fromColumn: vwResourceDetails.HireDate
+	toColumn: dimDate_ResourceDetails.Date
+
+relationship 816085aa-cfde-490f-a816-fb1d4f97987b
+	fromColumn: vwAccountDetails.CLASSID
+	toColumn: dimClinic.ID
+
+relationship 460c96a7-17bc-4b21-b18c-8f617a2c3789
+	fromColumn: vwAccountDetails.DEPARTMENTID
+	toColumn: dimDepartment.ID
+
+relationship 5da5cd1b-b11d-4dc2-9dc9-3dea83b56a24
+	fromColumn: vwAccountDetails.LOCATIONID
+	toColumn: dimLocation.ID
+
+relationship 6cb2c913-70c7-4329-9ab1-039c18930bd1
+	fromColumn: vwBudget.CLASSID
+	toColumn: dimClinic.ID
+
+relationship c1f95b57-4a4e-42f4-a380-2d67760b50c0
+	fromColumn: vwBudget.DEPT_ID
+	toColumn: dimDepartment.ID
+
+relationship 07b540c3-8882-4b23-b87b-13c7d0ab6ace
+	fromColumn: vwBudget.LOCATION_ID
+	toColumn: dimLocation.ID
+
+relationship 35b08bce-1f23-4209-91e0-83b5bfe7c45a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveLead.FirstVisitDate
+	toColumn: LocalDateTable_5fdc2bd9-98b3-47c5-bd76-85797c65c878.Date
+
+relationship 138345bf-571d-4db5-ab45-5d3582745b48
+	fromColumn: vwClaimAnalysisAddOn.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 8f2a33f3-2bb8-4154-b762-0dee68fe667d
+	fromColumn: vwClaimAnalysisDtl.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship f5a2fa2e-d652-482e-8490-281250cfbb4a
+	isActive: false
+	fromColumn: vwClaimAnalysisAddOn.ProviderCategory
+	toColumn: vwProviderCategory.ProviderCategory
+
+relationship 214d6385-2e51-4f6b-9b8b-881c061a9a00
+	isActive: false
+	fromColumn: vwClaimAnalysisDtl.ProviderCategory
+	toColumn: vwProviderCategory.ProviderCategory
+
+relationship ab9b8a4c-fe80-436a-a804-455dceac9ce3
+	fromColumn: vwLifetimeValue.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship e2a5f32e-1ab6-472d-8c84-abffa9306507
+	crossFilteringBehavior: bothDirections
+	fromColumn: vwPatientDisorders.PatientId
+	toColumn: vwClinicalAnalytics.PatientId
+
+relationship 25a75f19-0a48-471a-8953-ba950ff79c6b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: EmrSfMatch.emr_ModifiedOn
+	toColumn: LocalDateTable_1d431358-b6d5-4733-ad0a-4848b5c2f352.Date
+
+relationship 571e4d4c-e7bd-4365-a9e5-142874d42624
+	joinOnDateBehavior: datePartOnly
+	fromColumn: EmrSfMatch.sf_CreatedOn
+	toColumn: LocalDateTable_150ae7cb-7029-4538-b8d3-164c735d5f03.Date
+
+relationship 8a0861a0-1bbe-44b1-91d0-8420531f322c
+	isActive: false
+	fromColumn: EmrSfMatch.Market
+	toColumn: dimMarket.Market
+
+relationship d288beb7-b2ea-4882-8299-461241a5991e
+	fromColumn: vwSumPaymentClaim.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship d9c1d772-193c-4dba-ac38-991a92297175
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwSumPaymentPosting.VisitDate
+	toColumn: LocalDateTable_7b3caa8f-2e43-489f-8f19-820aed10b54e.Date
+
+relationship 44dad16f-c790-46ea-b038-000f89a1964b
+	fromColumn: vwSumPaymentPosting.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 78179915-6e1c-4a9d-8c41-84f027988038
+	fromColumn: vwSumPaymentDetailExtended.PayerName
+	toColumn: dimPayerName.PayerName
+
+relationship 28d7dc04-5d59-4d13-8014-e5094bd447e7
+	fromColumn: vwSumPaymentPosting.PayerName
+	toColumn: dimPayerName.PayerName
+
+relationship 751c1048-5ea7-47c8-a927-4b27fe666bd2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwReferralConversion.'Date FirstAppt'
+	toColumn: LocalDateTable_765ed9e1-4c15-413f-b9de-6e4d0553c25d.Date
+
+relationship 6f719a4a-12dc-4556-ac2b-41f1cc97cd66
+	joinOnDateBehavior: datePartOnly
+	fromColumn: EmrSfMatch.ConsentSignDate
+	toColumn: LocalDateTable_9450bbe6-a19b-4cd1-a936-21b821c0c915.Date
+
+relationship 6991998a-9eca-4492-823b-a1fb6da628cd
+	fromColumn: vwCopay.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship d22843d7-2053-4518-bbd3-9dd602c48d81
+	isActive: false
+	fromColumn: vwCopay.Market
+	toColumn: dimMarket.Market
+
+relationship 28b786cc-cbfd-469b-8b0b-a82c08adf421
+	isActive: false
+	fromColumn: vwCopay.MRNNumber
+	toColumn: vwLifetimeValue.MRNNumber
+
+relationship 94437d35-8587-42ff-883c-a682ce76f907
+	fromColumn: EmrSfMatch.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship d89a58bf-96f1-4435-a5d2-5be63c2b7151
+	fromColumn: vwProviderMissingSchedule.PreferredFacility
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship abbf6d1a-7409-4ba3-b930-d9b6a9fa9880
+	fromColumn: vwProviderMissingCategory.PreferredFacility
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship fb721a7b-a14e-42a4-bace-8ea772dc22dc
+	isActive: false
+	fromColumn: vwVisitIssueLog.Market
+	toColumn: dimMarket.Market
+
+relationship 615d8dac-f49e-4999-89c6-e186f9f222ee
+	isActive: false
+	fromColumn: vwVisitIssueLog.MRNNumber
+	toColumn: vwLifetimeValue.MRNNumber
+
+relationship 7f5897d7-adf1-44a4-8b62-ff89d67bb236
+	isActive: false
+	fromColumn: vwVisitIssueLog.ProviderCategory
+	toColumn: vwProviderCategory.ProviderCategory
+
+relationship e4191afb-6174-4b46-84b5-60530f4815c5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwVisitIssueLog.EnocunterCloseDate
+	toColumn: LocalDateTable_a5b89273-934a-4982-b9b5-4f9b75949b1b.Date
+
+relationship 26ce1ce7-92c3-4169-8f68-d6b8ace3b485
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cfgPayPeriodDetailed.Date
+	toColumn: LocalDateTable_c4aa8dbf-7b6d-448f-9b5b-f4b856b7e8f5.Date
+
+relationship b9ee1d3d-7219-49bd-9921-a36e74fcce8d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwVisitStatusIssues.EncounterCloseDate
+	toColumn: LocalDateTable_76d38d5e-4eea-4f6b-bfc0-e7a39f714a50.Date
+
+relationship 27fd206c-a489-4f75-be95-d007e365b270
+	isActive: false
+	fromColumn: vwVisitStatusIssues.Market
+	toColumn: dimMarket.Market
+
+relationship d8a1d425-6064-439e-8714-28369d9106ec
+	isActive: false
+	fromColumn: vwVisitStatusIssues.MRNNumber
+	toColumn: vwLifetimeValue.MRNNumber
+
+relationship 48df8625-5fc6-4c6c-83d3-4fd575b0518b
+	isActive: false
+	fromColumn: vwVisitStatusIssues.ProviderCategory
+	toColumn: vwProviderCategory.ProviderCategory
+
+relationship 87f067ff-d3fe-4b09-9914-5581cd4a8a60
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwVisitStatusIssues.VisitDate
+	toColumn: LocalDateTable_a2e57f2e-3ac5-4f9f-83bf-2315d4f3b7d0.Date
+
+relationship 3ee2f5db-bb18-442f-8a1f-fecf723efa2e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwVisitIssueLog.VisitDate
+	toColumn: LocalDateTable_5d38f683-cf73-4820-a314-1dcbaf918089.Date
+
+relationship 628f2729-b706-1912-4e0a-b9defaa6f0be
+	fromColumn: vwReferralConversion.'Market - Facility'
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship e8b9dbae-4a9a-4d9d-bee6-ca4c7c3a56bf
+	fromColumn: vwCollectiveLead.Facility
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship 49ade244-5c27-40f0-8414-fccd9ce0f2af
+	fromColumn: vwLeadIntakeDashboard.Market
+	toColumn: dimMarket.Market
+
+relationship AutoDetected_6c41e02e-0335-4965-8c4e-68d4d35a8169
+	fromColumn: vwOperationsPerf.Market
+	toColumn: dimMarket.Market
+
+relationship AutoDetected_7b79e97a-f550-437f-9538-8ecca76497cb
+	fromColumn: vwOperationsPerf2.Market
+	toColumn: dimMarket.Market
+
+relationship AutoDetected_9db07c89-4fed-480b-9e4e-292a063ac52f
+	fromColumn: vwOperationsPerf3.Market
+	toColumn: dimMarket.Market
+
+relationship 2e991f5d-1eaf-46fa-9f21-33a58f523fa5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwClaimDenials.DOB
+	toColumn: LocalDateTable_7b6fbf2b-b138-45be-8b75-f1244af8b0d0.Date
+
+relationship AutoDetected_86410e9c-3f19-489d-8a4b-0bf4b93775af
+	fromColumn: vwClaimDenials.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship AutoDetected_aece22a1-8ae4-4691-a20c-979084caf156
+	isActive: false
+	fromColumn: vwClaimDenials.Market
+	toColumn: dimMarket.Market
+
+relationship 20cbb3ce-050a-4e35-89ca-1e3bd7f00e5d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwClaimDenials.PostingDate
+	toColumn: LocalDateTable_65f39b36-4332-47dc-bc8a-85173a28bfb0.Date
+
+relationship 1d6212eb-84a7-4fe1-be35-251f4327316f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwPatientFollowUp.FirstCompletedVisitDate
+	toColumn: LocalDateTable_08d5342f-d308-4892-9856-f7f584d58157.Date
+
+relationship c14f17c3-c3a6-4868-9ec3-d1483c420ec7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwPatientFollowUp.LastCompletedVisitDate
+	toColumn: LocalDateTable_9e968f9b-6bd0-4f34-8255-2140b44d33f2.Date
+
+relationship AutoDetected_ccd8e62d-6f8d-401e-ae3e-81cf4bbb6491
+	fromColumn: vwPatientFollowUp.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship 9e139d4f-a961-485c-ade8-a0e023c0df39
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveLead.DOB
+	toColumn: LocalDateTable_e162794e-77e3-4d17-8576-1d21e1c6f09a.Date
+
+relationship ac67c7d7-6ae2-494e-bd81-9978b0be22e7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveLead.DateConverted
+	toColumn: LocalDateTable_ffeaa976-af3f-413f-aeac-52a662730d8e.Date
+
+relationship 94409061-8013-4757-bda4-2c38dafd3188
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveLead.AccountInqDate
+	toColumn: LocalDateTable_7cb0188e-7dae-4d34-bb98-1951b57d6334.Date
+
+relationship AutoDetected_2017b7cb-498e-4cb2-81c0-796527c9767e
+	fromColumn: vwPanelAge.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship AutoDetected_5c40bc82-e803-4030-aba6-4f039521d96e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: vwPanelAvgVisits.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship AutoDetected_8d26e66b-ad62-422c-8102-e749f1bb8a81
+	fromColumn: vwPanelDisorders.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship AutoDetected_f737b527-23ed-4e82-873d-c2ba53cd0dd2
+	fromColumn: vwPanelGender.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship AutoDetected_a9e31464-652c-4c01-8f34-abca51fb3d3d
+	fromColumn: vwPanelRetention.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship AutoDetected_35fd94ae-14ff-4344-aaed-ca3c789cd725
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: vwPanelTotals.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship AutoDetected_51707c2e-a4d5-471a-b1ed-799f832d3c81
+	fromColumn: vwPanelVisitType.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 801f1b30-1f55-4f9e-b920-a7797bce3f6b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveLead.LastCompletedVisitDate
+	toColumn: LocalDateTable_aa40c58c-62b9-413b-96f7-de32c4031514.Date
+
+relationship AutoDetected_bfef96a7-4aca-4b88-ae2d-fc0a65f80e75
+	fromColumn: vwPanelSurveys.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 76815cb7-2b69-4897-9efa-e331902249b8
+	crossFilteringBehavior: bothDirections
+	fromColumn: 2_Date_Expander.Date
+	toColumn: cfgPayPeriodDetailed.Date
+
+relationship 068c2d6e-bd92-4696-89c5-37e22571532c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwProviderPatientBalance.LastCompletedVisitDate
+	toColumn: LocalDateTable_2f76bdca-01b0-4036-afcc-67e073bc0ff8.Date
+
+relationship 15ab6019-729c-443d-ac70-4a4e78de6e49
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwProviderPatientBalance.NextSchedVisitDate
+	toColumn: LocalDateTable_aa71a330-841b-45bf-8471-af14859f0ef9.Date
+
+relationship AutoDetected_53f3c4f0-cc2d-46a0-9c88-0180cb34c7dd
+	fromColumn: vwProviderPatientBalance.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship AutoDetected_eb301b9c-7ba9-4bfc-8ad6-4441fcfff0e0
+	isActive: false
+	fromColumn: vwProviderPatientBalance.Market
+	toColumn: dimMarket.Market
+
+relationship AutoDetected_d7806c2e-81e7-41eb-88c2-722ce6a3902f
+	fromColumn: vwProviderPatientBalance.VisitStatusID
+	toColumn: vwVisitStatus.VisitStatusID
+
+relationship AutoDetected_5d7f7323-45ad-4773-a950-4568f18751e8
+	isActive: false
+	fromColumn: vwProviderPatientBalance.MRNNumber
+	toColumn: vwLifetimeValue.MRNNumber
+
+relationship AutoDetected_25530dc0-4e31-48c6-b5ff-16bb1ad94278
+	fromColumn: vwProviderUtilization.Market
+	toColumn: dimMarket.Market
+
+relationship AutoDetected_04e7d01a-9aeb-4994-af29-26cc93500041
+	isActive: false
+	fromColumn: vwProviderUtilization.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship AutoDetected_0e8e9bef-184b-4ad2-b0e1-de3ad437d511
+	fromColumn: vwProviderUtilization.ProviderCategory
+	toColumn: vwProviderCategory.ProviderCategory
+
+relationship d86efff0-3afa-49e8-9004-33506ba382a0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCadence.PsychIntakeDate
+	toColumn: LocalDateTable_85dfe2ab-b5cf-4da6-bf19-d20ae3f1c521.Date
+
+relationship 30e2e011-7a64-4f50-bbff-ba59577dd840
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCadence.LastCompletedVisit
+	toColumn: LocalDateTable_ce7902e7-96c9-48bc-90d0-db6666b766b2.Date
+
+relationship ec1ffe12-eb24-7516-4702-910c0447a19e
+	fromColumn: vwCadence.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship bb4f0bf1-4099-4137-9519-cfb37ba87fa7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwTalkDesk.End_TDate
+	toColumn: LocalDateTable_149354b1-a737-46ad-ab3b-a08b3758b627.Date
+
+relationship 76797d90-57f2-4881-89ed-710d9583f8d8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwEncounter.VisitDate
+	toColumn: LocalDateTable_1e9760f8-8515-41ec-9ba4-7535c1cdddbb.Date
+
+relationship 064799bc-6fd7-ef27-5557-463b88157728
+	fromColumn: vwOnLineScheduleOpenSlots.ResourceID
+	toColumn: vwResourceDetails.ResourceId
+
+relationship c7fa6a8d-7a7e-414d-b4fb-fc5341a7a1d1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwOnLineScheduleOpenSlots.StartDateTime
+	toColumn: LocalDateTable_4664b199-0aa4-45eb-a89a-7ae40099ed92.Date
+
+relationship d2bb34ce-3c81-462f-980b-54e82e38af7a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwOnLineScheduleOpenSlots.EndDateTime
+	toColumn: LocalDateTable_b50bdb6d-2c20-4e20-914b-136c13b09e2e.Date
+
+relationship bee2b9cb-8af4-47e4-98cb-398008470a36
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwConvNotCplt.DateConverted
+	toColumn: LocalDateTable_feda2414-2453-4fc4-8766-ab2381f74d80.Date
+
+relationship a2e486c2-f39a-42d4-9d4d-8693611c6cc3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwConvNotCplt.FirstVisitDate
+	toColumn: LocalDateTable_e6a7d6b2-0095-4c08-ba3a-65fb5e216cbc.Date
+
+relationship 21b14253-abf3-41b3-9a49-0799ae3cbd14
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwCollectiveLead.NextSchedVisitDate
+	toColumn: LocalDateTable_e5f17a4f-0270-4efc-9927-16096b51be1c.Date
+
+relationship 47dd032a-107f-45d1-8b94-4f9f7aa1923f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwConvNotCplt.NextSchedVisitDate
+	toColumn: LocalDateTable_bbadbda3-51c7-4bf0-b7c6-cf1e45e2f16b.Date
+
+relationship c7c2552d-090c-4032-88e3-373fcabb24d8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwEncounterPayrollReduced.VisitDate
+	toColumn: LocalDateTable_49f97600-bcd3-4e5f-96e7-53e3ab5719c7.Date
+
+relationship d9941920-098a-4c97-b1b3-3c30200dd3ca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'PRV vwEncounterPayrollReduced'.VisitDate
+	toColumn: LocalDateTable_f87de4f9-1229-44af-92a4-cfa1eb8b6945.Date
+
+relationship 5c588f6f-a1a2-f010-47b0-b2d8f2f3ace1
+	fromColumn: vwEncounterPayrollReducedCombined.ResourceID
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 59886a13-a93c-2f12-1e22-f780e70a37da
+	fromColumn: vwCollectiveLead.DurationGroup
+	toColumn: DurationLookup.DurationGroup
+
+relationship a32bd25a-1564-4df6-affc-46f89a191747
+	fromColumn: vwScheduleVisitDetails.VisitDate
+	toColumn: dimDate.Date
+
+relationship c6599465-177c-4b81-b8a9-f0fed95c1b61
+	isActive: false
+	fromColumn: vwEncounter.EncounterDate
+	toColumn: dimDate.Date
+
+relationship 9002a500-002c-4a90-a4dc-2384cd432d18
+	fromColumn: vwSummaryUtilizationByResource.VisitDate
+	toColumn: dimDate.Date
+
+relationship 52bbf8a3-b6b0-4686-927a-137865db7f49
+	fromColumn: vwSummaryUtilSchdByResource.VisitDate
+	toColumn: dimDate.Date
+
+relationship 5391ac1a-64f8-4081-bed1-723acefe046e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: cfgWeekDayWts.MonthDate
+	toColumn: dimDate.Date
+
+relationship af6e825b-c6a6-49e1-a53c-cb9c8c8447af
+	fromColumn: cfgDailyBudget.MonthDate
+	toColumn: dimDate.Date
+
+relationship 7507bc68-8e51-4f2e-833e-ad5637104cc1
+	fromColumn: vwCollectiveLead.InquiryDate
+	toColumn: dimDate.Date
+
+relationship 1a67a038-5918-4e0e-a231-d2da0b3703bb
+	isActive: false
+	fromColumn: vwCollectiveLead.DateLastModified
+	toColumn: dimDate.Date
+
+relationship 97794fd8-a0a2-41c7-81a5-ef877222a337
+	fromColumn: 'vwCollectiveLead - DQ'.InquiryDate
+	toColumn: dimDate.Date
+
+relationship 03279cca-b28d-4dbe-a170-1f5c4556bbfe
+	isActive: false
+	fromColumn: 'vwCollectiveLead - DQ'.DateLastModified
+	toColumn: dimDate.Date
+
+relationship aad5d088-2b2a-4d74-89ee-05ecabdecf45
+	fromColumn: vwDailySales.VisitDate
+	toColumn: dimDate.Date
+
+relationship 76acf494-9d82-4c10-858c-f4d050413a99
+	fromColumn: vwDailySalesCombined.VisitDate
+	toColumn: dimDate.Date
+
+relationship dc91eb45-1560-4559-a9e8-2bbe28f4be46
+	crossFilteringBehavior: bothDirections
+	fromColumn: 2_Date_Expander.Date
+	toColumn: dimDate.Date
+
+relationship f4d8fc15-4078-45e6-b9be-3a9f084f82ec
+	crossFilteringBehavior: bothDirections
+	fromColumn: 3_Date_Expander_LDM.Date
+	toColumn: dimDate.Date
+
+relationship b026a999-7c73-47e2-a01d-ffdeac63b49a
+	fromColumn: vwLeadIntakeDashboard.MonthDate
+	toColumn: dimDate.Date
+
+relationship 0f31068e-ff65-42a4-a783-6ace2f030ac9
+	fromColumn: vwLeadActivity.InquiryDate
+	toColumn: dimDate.Date
+
+relationship 59502f0a-76a2-41e2-bb32-8347b9f03ed3
+	fromColumn: vwProviderSchedule.ProviderScheduleDate
+	toColumn: dimDate.Date
+
+relationship 2eab5897-c902-4c71-89c9-0d165abcc329
+	fromColumn: vwClaimAnalysisAddOn.EncounterDate
+	toColumn: dimDate.Date
+
+relationship 3308dd92-9057-4e7a-91e9-62b19fe6cdb3
+	fromColumn: vwClaimAnalysisDtl.EncounterDate
+	toColumn: dimDate.Date
+
+relationship 88c0eb5f-5ec2-498b-9646-893a62ad4659
+	fromColumn: vwSumPaymentDetailExtended.VisitDate
+	toColumn: dimDate.Date
+
+relationship 87dd9f20-05e6-4de4-9e79-7dd31c99fea7
+	fromColumn: vwSumPaymentClaim.VisitDate
+	toColumn: dimDate.Date
+
+relationship 737f7412-e805-48f6-8957-8764a8362c09
+	fromColumn: vwSumPaymentPosting.PostingDate
+	toColumn: dimDate.Date
+
+relationship 9e6c39d2-2a6a-47ce-a361-ec61579697b8
+	fromColumn: vwCopay.VisitDate
+	toColumn: dimDate.Date
+
+relationship 1fcc6ba6-4e72-4f4a-b7b1-e5b561993a67
+	fromColumn: EmrSfMatch.emr_CreatedOn
+	toColumn: dimDate.Date
+
+relationship 77beabfb-0201-460d-a34e-1957927604b1
+	fromColumn: vwReferralConversion.'Date Inquiry'
+	toColumn: dimDate.Date
+
+relationship a6bb810f-eafc-4441-ba77-af6b3be20a53
+	fromColumn: vwOperationsPerf.VisitDate
+	toColumn: dimDate.Date
+
+relationship d2e3f064-d000-41a0-b17c-cd51bede46c3
+	fromColumn: vwOperationsPerf2.VisitDate
+	toColumn: dimDate.Date
+
+relationship e20ad060-428b-408c-a0cb-1196ab279e79
+	fromColumn: vwOperationsPerf3.PostingDate
+	toColumn: dimDate.Date
+
+relationship 46ad4277-f384-4b1a-a4ba-23e6d13247c5
+	fromColumn: vwClaimDenials.DateOfService
+	toColumn: dimDate.Date
+
+relationship a4f6e268-902b-4de3-b6dc-2223da5f4c23
+	fromColumn: vwProviderUtilization.MonthDate
+	toColumn: dimDate.Date
+
+relationship 0f7a5c30-fa81-8add-b178-9bfb4057d67d
+	fromColumn: vwDailySalesCombinedByProvider.VisitDate
+	toColumn: dimDate.Date
+
+relationship 7be98bf5-c244-2147-6182-56df411cf756
+	fromColumn: vwLeadsByPriviaProvider.InquiryDate
+	toColumn: dimDate.Date
+
+relationship 9bbe9628-172c-b37d-4747-296f5dd25713
+	fromColumn: vwTalkDesk.Start_Date
+	toColumn: dimDate.Date
+
+relationship ddcbc11c-0665-9764-c62f-cbf3e4b676b2
+	fromColumn: vwConvNotCplt.InquiryDate
+	toColumn: dimDate.Date
+
+relationship 9c07863c-2ff7-db87-4771-342dc0845f19
+	fromColumn: vwEncounterPayrollReducedCombined.VisitDate
+	toColumn: dimDate.Date
+
+relationship eefb9f3b-1487-4cc5-b80a-3c341ca9cfcf
+	fromColumn: dimDate.YearMonthWeekNumber
+	toColumn: cfgWeekDays.YearMonthWeek
+
+relationship b82fb838-cdbd-4352-aff6-c47e01ca8829
+	joinOnDateBehavior: datePartOnly
+	fromColumn: cfgPayPeriodDetailed.PayDate
+	toColumn: LocalDateTable_0a8d8612-17c8-4efa-a82b-8fad43aaa13d.Date
+
+relationship 1f6a0e03-39aa-475b-af5f-5abd2276fab5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'vwEncounterPayroll - PRV'.EncounterDate
+	toColumn: LocalDateTable_096ab59f-6e75-43ba-a37a-271847a146bf.Date
+
+relationship 7d6f8b81-f04c-4d40-955b-1b6ed4020413
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwEncounterPayroll.EncounterDate
+	toColumn: LocalDateTable_0b050bce-2974-4fb6-9bea-a7e322814dca.Date
+
+relationship 5c5d3e79-abf0-bf96-bc1b-ce2227256df2
+	fromColumn: vwEncounterPayroll.NoteClosedDateTime
+	toColumn: cfgPayPeriodDetailed.Date
+
+relationship d1135d5c-06e5-bec5-d87e-b0d3e25196fb
+	fromColumn: 'vwEncounterPayroll - PRV'.NoteClosedDateTime
+	toColumn: cfgPayPeriodDetailed.Date
+
+relationship 6880da0f-344e-10df-d587-09e6f48b058c
+	fromColumn: vwEncounterPayroll.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 54b49d7d-87da-b714-31b1-b23cdfe48f5c
+	fromColumn: 'vwEncounterPayroll - PRV'.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship 92d447b3-56af-1735-2dd5-5c5e592e1c77
+	isActive: false
+	fromColumn: vwEncounterPayroll.VisitDate
+	toColumn: cfgPayPeriodDetailed.Date
+
+relationship 9e8cea11-064c-33a2-deb6-69378818f5eb
+	isActive: false
+	fromColumn: 'vwEncounterPayroll - PRV'.VisitDate
+	toColumn: cfgPayPeriodDetailed.Date
+
+relationship 9fb6e1d3-a66e-4a6f-b14e-faf6c0e8a49b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwVisitCosignPending.NoteClosedDateTime
+	toColumn: LocalDateTable_f204f287-5077-455f-8519-6c9b1db58110.Date
+
+relationship 89b0384f-b4b2-ce8c-f041-7ac408ff96e3
+	fromColumn: vwVisitCosignPending.VisitDate
+	toColumn: dimDate.Date
+
+relationship f696fcfc-6649-2325-1765-03c806dd618a
+	fromColumn: vwVisitCosignPending.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship f24032e2-2b69-3140-bf9d-c58abffb66e3
+	fromColumn: vwClaimIssueLog.FacilityName
+	toColumn: vwFacilitiesMaster.FacilityName
+
+relationship 0e41232e-76bd-682f-a4b4-cb4555adcd88
+	isActive: false
+	fromColumn: vwClaimIssueLog.Market
+	toColumn: dimMarket.Market
+
+relationship 5232ce7a-075d-e314-d420-0a0f52275072
+	fromColumn: vwVisitTrendByResourceNew.VisitDate
+	toColumn: dimDate.Date
+
+relationship 8e0bb2f5-4a39-1172-efe8-a6ea7ade8ebf
+	isActive: false
+	fromColumn: vwVisitTrendByResourceNew.ResourceId
+	toColumn: vwResourceDetails.ResourceId
+
+relationship f2527a48-03c9-804c-4b02-39dc58aedb5f
+	isActive: false
+	fromColumn: vwVisitTrendByResourceNew.ProviderCategoryID
+	toColumn: vwProviderCategory.ProviderCategoryID
+
+relationship ab56b876-b528-e4a0-3251-084579a351e1
+	fromColumn: vwVisitTrendByResourceNew.FacilityID
+	toColumn: vwFacilitiesMaster.FacilityId
+
+relationship 1279ada6-8076-32ff-e5c0-b465bd593654
+	fromColumn: vwLeadActivityElapsedTime.MinActivityDatetime
+	toColumn: dimDate.Date
+
+relationship 85ad2c81-e8d3-0833-c3e6-b8b6b2739345
+	isActive: false
+	fromColumn: vwLeadActivityElapsedTime.MinLeadDatetime
+	toColumn: dimDate.Date
+
+relationship 46d2f930-dc4c-4ad4-b6b0-eaa4e5cc7070
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwProviderScheduleAnalytics.ProviderScheduleDate
+	toColumn: LocalDateTable_256852f9-a93a-4327-b43b-66c77247517f.Date
+
+relationship 7302fad4-b440-69ed-03ed-ed6b4b0f0937
+	fromColumn: vwClaimIssuesDaySummary.IssueDate
+	toColumn: dimDate.Date
+
+relationship d80fdc5a-7143-932b-6868-87b38e05c480
+	fromColumn: vwClaimIssueLog.VisitDate
+	toColumn: dimDate.Date
+
+relationship 904533bd-d136-aca5-4dcd-aa72ff1bbef5
+	fromColumn: vwClaimIssueLog.IssueType
+	toColumn: dimIssueType.IssueType
+
+relationship b69a2bfb-9296-4a4b-e333-c37c656bd870
+	fromColumn: vwClaimIssuesDaySummary.RequiredResponse
+	toColumn: dimIssueType.IssueType
+
+relationship 18870164-3d67-45f7-87e5-5897f95b9f2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'PRV vwEncounterPayrollReduced'.NoteClosedDateTime
+	toColumn: LocalDateTable_eab38046-955e-4828-b4e4-ebbe128f353c.Date
+
+relationship cb1b8c62-a4d6-42e4-af0b-9f9fb6e09106
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwEncounterPayrollReduced.NoteClosedDateTime
+	toColumn: LocalDateTable_c62ea07b-97ec-4bc0-a1af-bd675d5e7d63.Date
+
+relationship 8f40f79c-b0bd-4d77-8c34-5d4e407e5d84
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vwEncounterPayrollReducedCombined.NoteClosedDateTime
+	toColumn: LocalDateTable_8970fe3d-97bf-4c67-ae60-78f06a8ddbc0.Date
+

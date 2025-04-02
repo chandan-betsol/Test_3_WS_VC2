@@ -1,0 +1,152 @@
+table vwDailySales
+	lineageTag: 06a330be-ac5a-436a-8d30-9e6e69565ac3
+
+	column Market
+		dataType: string
+		lineageTag: 2f5c194f-16bd-4649-b238-ecb8f11be554
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: 1588d589-4081-46ba-a801-378d86b42cc5
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 517b4763-925b-4e61-96a3-216c4c773e2b
+		summarizeBy: none
+		sourceColumn: FacilityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 208fb1b5-5b38-4ebe-8d13-b85a7929dc3b
+		summarizeBy: none
+		sourceColumn: VisitDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column ThrIntVis
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b97baf2-d9b4-4498-b942-ff5ec7a72868
+		summarizeBy: sum
+		sourceColumn: ThrIntVis
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThrFupVis
+		dataType: int64
+		formatString: 0
+		lineageTag: a075fd72-99c0-45e8-946c-6b10ef2d3cb7
+		summarizeBy: sum
+		sourceColumn: ThrFupVis
+
+		annotation SummarizationSetBy = Automatic
+
+	column PsyIntVis
+		dataType: int64
+		formatString: 0
+		lineageTag: 1eba0ec7-f7e0-4574-8a13-35b3324e2021
+		summarizeBy: sum
+		sourceColumn: PsyIntVis
+
+		annotation SummarizationSetBy = Automatic
+
+	column PsyFupVis
+		dataType: int64
+		formatString: 0
+		lineageTag: 32fce9bf-6b19-4621-98ff-6f0d473c6e85
+		summarizeBy: sum
+		sourceColumn: PsyFupVis
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThrIntRev
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e4d0205-674d-4a33-9734-4115583e34fc
+		summarizeBy: sum
+		sourceColumn: ThrIntRev
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThrFupRev
+		dataType: int64
+		formatString: 0
+		lineageTag: 407fb02c-0406-4e44-a16f-751ec20b942c
+		summarizeBy: sum
+		sourceColumn: ThrFupRev
+
+		annotation SummarizationSetBy = Automatic
+
+	column PsyIntRev
+		dataType: int64
+		formatString: 0
+		lineageTag: e22a8827-af3e-4dc7-9083-e17e1cebef6f
+		summarizeBy: sum
+		sourceColumn: PsyIntRev
+
+		annotation SummarizationSetBy = Automatic
+
+	column PsyFupRev
+		dataType: int64
+		formatString: 0
+		lineageTag: f433adfe-58a6-45d1-9c74-3868b935d760
+		summarizeBy: sum
+		sourceColumn: PsyFupRev
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoShowVis
+		dataType: int64
+		formatString: 0
+		lineageTag: 653788c2-a4ee-416c-998b-1df4a0f59d81
+		summarizeBy: sum
+		sourceColumn: NoShowVis
+
+		annotation SummarizationSetBy = Automatic
+
+	column CancelVis
+		dataType: int64
+		formatString: 0
+		lineageTag: ed668b6b-f62c-4f64-aa84-57feedb097ab
+		summarizeBy: sum
+		sourceColumn: CancelVis
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoShowRev
+		dataType: int64
+		formatString: 0
+		lineageTag: e05ecba2-929c-4343-a27d-e90e68146021
+		summarizeBy: sum
+		sourceColumn: NoShowRev
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwDailySales-808a7be0-862d-4ead-9c47-e61a635a0295 = m
+		mode: import
+		queryGroup: FACT\Finance
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    dbo_sumDailySales = Source{[Schema="dbo",Item="vwDailySales"]}[Data]
+				in
+				    dbo_sumDailySales
+
+	annotation PBI_ResultType = Exception
+

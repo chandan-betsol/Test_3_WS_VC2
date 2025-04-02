@@ -1,0 +1,233 @@
+expression ServerName = "azr-cbh-use1-sql-server01.database.windows.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 9c786d7f-516e-444f-9973-14adcc8098ea
+	queryGroup: Settings
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression DBName = "CollectiveBH" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 22628165-89ae-41b7-a201-da05812f23e1
+	queryGroup: Settings
+
+	annotation PBI_ResultType = Text
+
+expression 'vwCollectiveAccount (2)' =
+		let
+		    Source = vwCollectiveAccount,
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Insurance] = "Other")),
+		    #"Grouped Rows" = Table.Group(#"Filtered Rows", {"capitalized_column"}, {{"Count", each Table.RowCount(_), Int64.Type}}),
+		    #"Sorted Rows" = Table.Sort(#"Grouped Rows",{{"Count", Order.Descending}})
+		in
+		    #"Sorted Rows"
+	lineageTag: 8cdd6bdf-6348-4173-a15e-18f4ee2674fc
+	queryGroup: FACT\Marketing
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwResourceDetails (3)' = ```
+		let
+		    Source = Sql.Database(ServerName, DBName),
+		    dbo_vwResourceDetails = Source{[Schema="dbo",Item="vwResourceDetails"]}[Data],
+		    #"Inserted Merged Column" = Table.AddColumn(dbo_vwResourceDetails, 
+		"Full Name", 
+		each Text.Combine(
+		{[LastName],[FirstName] }, ", "), 
+		type text
+		),
+		    #"Removed Columns" = Table.RemoveColumns(#"Inserted Merged Column",{"FirstName", "LastName", "PracticeId", "ResourceType", "IsPreferredFaclity"}),
+		    #"Inserted Merged Column1" = Table.AddColumn(#"Removed Columns", "Clinician (Goal)", 
+		each Text.Combine({[Full Name], " (", Text.From([WkAptGoals]), ")"}), type text),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Inserted Merged Column1",{{"ProviderCategoryID", Int64.Type}})
+		in
+		    #"Changed Type"
+		```
+	lineageTag: 21bd70ca-3c64-4d70-b0ca-e3e952afac74
+	queryGroup: DIM
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwResourceDetails (2)' =
+		let
+		    Source = Sql.Database(ServerName, DBName),
+		    dbo_vwResourceDetails = Source{[Schema="dbo",Item="vwResourceDetails"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(dbo_vwResourceDetails,{{"ResourceId", Int64.Type}, {"PracticeId", Int64.Type}, {"ResourceType", Int64.Type}, {"FirstName", type text}, {"LastName", type text}, {"ProviderCategoryID", Int64.Type}, {"Username", type text}, {"LastLoginDate", type date}, {"PreferredFacility", type text}, {"Market", type text}, {"IsPreferredFaclity", type logical}, {"Status", type text}, {"WKHours", Int64.Type}, {"WKGoals", type number}, {"WkAptGoals", Int64.Type}}),
+		    #"Merged Columns" = Table.CombineColumns(#"Changed Type",{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"Clinician"),
+		    #"Removed Columns" = Table.RemoveColumns(#"Merged Columns",{"PracticeId", "ResourceType", "IsPreferredFaclity"}),
+		    #"Inserted Merged Column" = Table.AddColumn(#"Removed Columns", "Clinician (Goal)", each Text.Combine({[Clinician], " (", Text.From([WkAptGoals]), ")"}), type text)
+		in
+		    #"Inserted Merged Column"
+	lineageTag: 0452fb9d-f1a3-4f93-9f50-33538dd70ae9
+	queryGroup: DIM
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression vwProviderSchedule_raw =
+		let
+		    Source = Sql.Database(ServerName, DBName),
+		    dbo_vwProviderSchedule = Source{[Schema="dbo",Item="vwProviderSchedule"]}[Data]
+		in
+		    dbo_vwProviderSchedule
+	lineageTag: ec7c6367-46b5-42b0-bb60-9e5b2e169511
+	queryGroup: 'FACT\Provider Schedule'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwProviderSchedule for Working Hours' =
+		let
+		    Source = vwProviderSchedule,
+		    #"Grouped Rows" = Table.Group(Source, {"ResourceId", "ProviderScheduleDate"}, {{"Start", each List.Min([Start]), type datetime}, {"End", each List.Max([End]), type datetime}, {"dur min", each List.Min([Duration]), type nullable number}, {"dur max", each List.Max([Duration]), type nullable number}})
+		in
+		    #"Grouped Rows"
+	lineageTag: b1090720-47be-49e3-9213-901bd094b293
+	queryGroup: 'FACT\Provider Schedule'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwProviderSchedule for Duration' =
+		let
+		    Source = vwProviderSchedule,
+		    #"Grouped Rows" = Table.Group(Source, {"ResourceId"}, {{"Start", each List.Min([Duration]), type nullable number}, {"End", each List.Max([Duration]), type nullable number}}),
+		    #"Sorted Rows" = Table.Sort(#"Grouped Rows",{{"End", Order.Descending}})
+		in
+		    #"Sorted Rows"
+	lineageTag: 1d16568a-af06-42d3-bc43-873e4de35eaf
+	queryGroup: 'FACT\Provider Schedule'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwProviderSchedule for 1615 RID' =
+		let
+		    Source = vwProviderSchedule,
+		    #"Filtered Rows" = Table.SelectRows(Source, each [ResourceId] = 1615)
+		in
+		    #"Filtered Rows"
+	lineageTag: cd43fb22-a99b-41b5-9e42-852d13070fa6
+	queryGroup: 'FACT\Provider Schedule'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwProviderSchedule for 1615 RID (2)' =
+		let
+		    Source = vwProviderSchedule,
+		    #"Filtered Rows" = Table.SelectRows(Source, each [ResourceId] = 1481),
+		    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"ProviderScheduleDate", Order.Ascending}})
+		in
+		    #"Sorted Rows"
+	lineageTag: 806734e8-2a51-4744-85c3-9c646831b9c8
+	queryGroup: 'FACT\Provider Schedule'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression EmrSfMatch_raw =
+		let
+		    Source = Sql.Database(ServerName, DBName),
+		    dbo_vwEmrSfMatch = Source{[Schema="dbo",Item="vwEmrSfMatch"]}[Data]
+		in
+		    dbo_vwEmrSfMatch
+	lineageTag: 32a04b2b-09bf-43a1-a70e-2fd9c134b40e
+	queryGroup: FACT\DailyOps\Raw
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwReferralConversion - raw' =
+		let
+		    Source = Sql.Database(ServerName, DBName),
+		    PRV_vwReferralConversion = Source{[Schema="PRV",Item="vwReferralConversion"]}[Data]
+		in
+		    PRV_vwReferralConversion
+	lineageTag: d5ed830f-19da-45e8-ae74-624a3c20b189
+	queryGroup: 'FACT\Marketing\Referral Conversion'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwCopay - raw' =
+		let
+		    Source = Sql.Database(ServerName, DBName),
+		    dbo_vwCopayDetails = Source{[Schema="dbo",Item="vwCopayDetails"]}[Data]
+		in
+		    dbo_vwCopayDetails
+	lineageTag: 1d528572-4a8a-4472-b858-07fa7d835b48
+	queryGroup: FACT\DailyOps\Raw
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Source =
+		let
+		    Source = Sql.Database(ServerName, DBName)
+		in
+		    Source
+	lineageTag: 97bbc134-7c32-4e65-9d38-455b56954505
+	queryGroup: Settings
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwLeadActivity - Cohort sort' =
+		let
+		    Source = vwLeadActivity,
+		    #"Grouped Rows" = Table.Group(Source, {"recordId", "FullName", "referralType", "LeadStatus"}, {{"MinLeadDate", each List.Min([Lead Date Time]), type datetime}, {"MinActivityDate", each List.Min([ActivityDatetime]), type nullable datetime}}),
+		    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "Duration_Minutes", each Duration.TotalMinutes([MinActivityDate] - [MinLeadDate])),
+		    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Duration_Hours", each [Duration_Minutes] / 60),
+		    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "Duration_Days", each [Duration_Hours] / 24),
+		    #"Sorted Rows" = Table.Sort(#"Added Custom2",{{"recordId", Order.Ascending}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Sorted Rows",{{"Duration_Hours", Int64.Type}, {"Duration_Minutes", Int64.Type}, {"Duration_Days", Int64.Type}}),
+		    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([MinActivityDate] <> null)),
+		    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [Duration_Days] >= 0),
+		    #"Inserted Year" = Table.AddColumn(#"Filtered Rows1", "Year", each Date.Year([MinLeadDate]), Int64.Type),
+		    #"Inserted Month" = Table.AddColumn(#"Inserted Year", "Month", each Date.Month([MinLeadDate]), Int64.Type),
+		    #"Merged Columns" = Table.CombineColumns(Table.TransformColumnTypes(#"Inserted Month", {{"Year", type text}, {"Month", type text}}, "es-AR"),{"Year", "Month"},Combiner.CombineTextByDelimiter("-", QuoteStyle.None),"Cohort"),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Merged Columns",{"Cohort"}),
+		    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+		    #"Duplicated Column" = Table.DuplicateColumn(#"Removed Duplicates", "Cohort", "Cohort ID"),
+		    #"Split Column by Delimiter" = Table.SplitColumn(#"Duplicated Column", "Cohort", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"Cohort.1", "Cohort.2"}),
+		    #"Added Custom Column" = Table.AddColumn(#"Split Column by Delimiter", "Custom", each Text.PadStart(Text.From([Cohort.2], "en-US"), 2, "0"), type text),
+		    #"Removed Columns" = Table.RemoveColumns(#"Added Custom Column",{"Cohort.2"}),
+		    #"Merged Columns1" = Table.CombineColumns(#"Removed Columns",{"Cohort.1", "Custom"},Combiner.CombineTextByDelimiter("-", QuoteStyle.None),"Cohort"),
+		    #"Sorted Rows1" = Table.Sort(#"Merged Columns1",{{"Cohort", Order.Ascending}}),
+		    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows1", "Cohort Sort", 1, 1, Int64.Type)
+		in
+		    #"Added Index"
+	lineageTag: 4e49b446-10f9-42d0-949f-26c388fa3d87
+	queryGroup: Exploration
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'vwMktgwithLTV - raw' =
+		let
+		    Source = Sql.Database(ServerName, DBName),
+		    dbo_vwMktgwithLTV = Source{[Schema="dbo",Item="vwMktgwithLTVCombined"]}[Data]
+		in
+		    dbo_vwMktgwithLTV
+	lineageTag: 2dd40a3f-ccaa-4284-9d18-5855a10752aa
+	queryGroup: FACT\Marketing\MarketingLTV
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

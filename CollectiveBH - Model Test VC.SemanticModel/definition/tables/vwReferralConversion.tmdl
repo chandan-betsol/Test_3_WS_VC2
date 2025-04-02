@@ -1,0 +1,217 @@
+table vwReferralConversion
+	lineageTag: 9ab62a39-6614-457a-9792-021cdf0b4a0d
+
+	column 'Patient Name'
+		dataType: string
+		lineageTag: ad91b386-e791-46ac-ae95-5746f697fb08
+		summarizeBy: none
+		sourceColumn: Patient Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column patientid
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5c7d070a-2e48-4bac-a393-3564fcc10a01
+		summarizeBy: sum
+		sourceColumn: patientid
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ptnt_prvdr_grp
+		dataType: string
+		lineageTag: 6a7d3809-11b1-4ff0-a754-ccf3e2ed4b73
+		summarizeBy: none
+		sourceColumn: ptnt_prvdr_grp
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ordering Provider'
+		dataType: string
+		lineageTag: 79130c5a-0298-47b9-8c57-77135d42c508
+		summarizeBy: none
+		sourceColumn: Ordering Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ordr Provdr Spclty'
+		dataType: string
+		lineageTag: 9a8792e4-7799-4ccd-8147-f1bf756d2eb1
+		summarizeBy: none
+		sourceColumn: Ordr Provdr Spclty
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Type'
+		dataType: string
+		lineageTag: 252194f2-411e-4ba1-b0ba-47a33470abe3
+		summarizeBy: none
+		sourceColumn: Order Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Receiving_Prvdr_City
+		dataType: string
+		lineageTag: c19a2332-a139-46af-a665-10f315e979d8
+		summarizeBy: none
+		sourceColumn: Receiving_Prvdr_City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Receiving Prvdr State'
+		dataType: string
+		lineageTag: 5189e103-0e6e-4f69-9ebf-8a80f6374d08
+		summarizeBy: none
+		sourceColumn: Receiving Prvdr State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clinician
+		dataType: string
+		lineageTag: 6b42f10b-4e7b-4a7e-b621-0d5c8e02804f
+		summarizeBy: none
+		sourceColumn: Clinician
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date FirstAppt'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ec37dbb5-3df7-4ede-9e19-8c8476cbfedd
+		summarizeBy: none
+		sourceColumn: Date FirstAppt
+
+		variation Variation
+			isDefault
+			relationship: 751c1048-5ea7-47c8-a927-4b27fe666bd2
+			defaultHierarchy: LocalDateTable_765ed9e1-4c15-413f-b9de-6e4d0553c25d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Num Appts'
+		dataType: int64
+		formatString: 0
+		lineageTag: 47f7e2d0-9ef4-406b-847d-529789f6b3d7
+		summarizeBy: sum
+		sourceColumn: Num Appts
+
+		annotation SummarizationSetBy = Automatic
+
+	column NotConverted
+		dataType: int64
+		formatString: 0
+		lineageTag: 0af3d09d-715e-4e1c-9ae4-5dfd544de606
+		summarizeBy: sum
+		sourceColumn: NotConverted
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoShow
+		dataType: int64
+		formatString: 0
+		lineageTag: 42072d3b-5524-4a03-b800-ef4de5f444a6
+		summarizeBy: sum
+		sourceColumn: NoShow
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cancel
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cb0bb2e-512f-4c04-8b3e-996840885e99
+		summarizeBy: sum
+		sourceColumn: Cancel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pending
+		dataType: int64
+		formatString: 0
+		lineageTag: fb5b158c-3133-4e09-80c6-9b26ca5c5fb3
+		summarizeBy: sum
+		sourceColumn: Pending
+
+		annotation SummarizationSetBy = Automatic
+
+	column Completed
+		dataType: int64
+		formatString: 0
+		lineageTag: 414e7d3a-f371-4370-ad4d-161f5df33d9e
+		summarizeBy: sum
+		sourceColumn: Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Inquiry'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8304790d-3036-4c05-9296-b5f1ea859e9a
+		summarizeBy: none
+		sourceColumn: Date Inquiry
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column InquiryDateYearMonth
+		dataType: string
+		lineageTag: dda1af67-6299-47be-8f56-46d2e8e2b460
+		summarizeBy: none
+		sourceColumn: InquiryDateYearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConversionFlag
+		dataType: string
+		lineageTag: 80d9d8d5-ac13-4898-ae7b-aa1a1c54e7cd
+		summarizeBy: none
+		sourceColumn: ConversionFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompletedFlag
+		dataType: string
+		lineageTag: 8ca06f22-dc99-4075-9889-d41d59378219
+		summarizeBy: none
+		sourceColumn: CompletedFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateDifference
+		dataType: int64
+		formatString: 0
+		lineageTag: 59ee59fc-d139-443c-b5e3-b410788085d3
+		summarizeBy: sum
+		sourceColumn: DateDifference
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Market - Facility'
+		dataType: string
+		lineageTag: b92343ce-5e29-4c7c-b5a6-7cc7da148adb
+		summarizeBy: none
+		sourceColumn: Market - Facility
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwReferralConversion = m
+		mode: import
+		queryGroup: 'FACT\Marketing\Referral Conversion'
+		source =
+				let
+				    Source = #"vwReferralConversion - raw",
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"patient_name", "Patient Name"}, {"Ordering_Provider", "Ordering Provider"}, {"Ordr_Provdr_Spclty", "Ordr Provdr Spclty"}, {"InquiryDate", "Date Inquiry"}, {"Order_Type", "Order Type"}, {"Receiving_Prvdr_State", "Receiving Prvdr State"}, {"ResourceFullName", "Clinician"}, {"FirstApptDate", "Date FirstAppt"}, {"NumAppts", "Num Appts"}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Renamed Columns",{{"Patient Name", Text.Proper, type text}, {"Order Type", Text.Proper, type text}, {"Receiving_Prvdr_City", Text.Proper, type text}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Capitalized Each Word", "Market - Facility", each Text.Combine({[Receiving Prvdr State], [Receiving_Prvdr_City]}, " - "), type text)
+				in
+				    #"Inserted Merged Column"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+
