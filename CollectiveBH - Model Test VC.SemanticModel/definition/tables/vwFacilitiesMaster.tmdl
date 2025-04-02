@@ -1,0 +1,63 @@
+table vwFacilitiesMaster
+	lineageTag: 8cd5ab99-e2df-4474-b056-cb3bf89fb7e5
+
+	column FacilityId
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d48fba4-8b90-407d-808a-8bdd9e10f94e
+		summarizeBy: none
+		sourceColumn: FacilityId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PracticeId
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f35fb84-ea2c-4710-b5d4-34305c2b4895
+		summarizeBy: count
+		sourceColumn: PracticeId
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: 1d790420-d87e-4abf-8fab-3f8e70ec1357
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 05e36dab-e06b-4bcf-97cf-12794b28fbf3
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: ff237488-439b-46d6-9bab-c6b326e35902
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwFacilitiesMaster-dd87d169-fb61-4918-9fb6-200e61fff72b = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwFacilitiesMaster = Source{[Schema="dbo",Item="vwFacilitiesMaster"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwFacilitiesMaster,{{"FacilityId", Int64.Type}, {"PracticeId", Int64.Type}, {"FacilityName", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([FacilityName] <> "The Collective")),
+				    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"PracticeId", Order.Ascending}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Sorted Rows", each ([PracticeId] = 200))
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,49 @@
+table NY_Referrals_by_Category
+	lineageTag: edb57b50-6ebe-4960-8384-dc2859a61a05
+
+	column NY_Referrals_by_Category
+		lineageTag: 61a38cad-73ec-4de0-8399-a522318e4132
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'NY_Referrals_by_Category Order'
+
+		relatedColumnDetails
+			groupByColumn: 'NY_Referrals_by_Category Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NY_Referrals_by_Category Fields'
+		isHidden
+		lineageTag: 5bef56b1-0fae-406b-bfe2-6340da2e19a0
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'NY_Referrals_by_Category Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NY_Referrals_by_Category Order'
+		isHidden
+		formatString: 0
+		lineageTag: 382cd411-09d8-46ee-b22e-42f8d4a17691
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition NY_Referrals_by_Category = calculated
+		mode: import
+		source =
+				{
+				    ("Physician-Lead Referral", NAMEOF('Measures - model'[NY_MKT_PhysicianLead]), 0),
+				    ("Attributable Patient-Lead", NAMEOF('Measures - model'[NY_MKT_AttributablePatient]), 1),
+				    ("Unattributable Patient-Lead", NAMEOF('Measures - model'[NY_MKT_UnattributablePatient]), 2)
+				}
+
+	annotation PBI_Id = d3a271be2d2c40af982547d4f7896b61
+

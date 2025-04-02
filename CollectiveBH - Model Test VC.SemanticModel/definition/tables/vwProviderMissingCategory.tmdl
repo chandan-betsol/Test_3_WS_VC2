@@ -1,0 +1,58 @@
+table vwProviderMissingCategory
+	lineageTag: 91b661dc-107e-40b2-9d87-9d0a09397518
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: 61639e81-31bc-4f4e-9fd9-bce1acf51ae5
+		summarizeBy: count
+		sourceColumn: ResourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PreferredFacility
+		dataType: string
+		lineageTag: 3bceadfa-e42c-477e-9454-3929e3d7c435
+		summarizeBy: none
+		sourceColumn: PreferredFacility
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: a1c2de79-4dea-4e90-8681-381095b3f1e8
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPreferredFaclity
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 07aa6696-b91d-44e4-b170-1ce63afc5928
+		summarizeBy: none
+		sourceColumn: IsPreferredFaclity
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullName
+		dataType: string
+		lineageTag: c63ad4d9-12be-4b13-ad05-b4c5b8d9f17d
+		summarizeBy: none
+		sourceColumn: FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwProviderMissingCategory-059aba99-fccc-4c32-9d84-ff2e1b49f931 = m
+		mode: import
+		queryGroup: FACT\DailyOps
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    dbo_vwProviderMissingCategory = Source{[Schema="dbo",Item="vwProviderMissingCategory"]}[Data],
+				    #"Merged Columns" = Table.CombineColumns(dbo_vwProviderMissingCategory,{"FirstName", "LastName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"FullName")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_ResultType = Exception
+

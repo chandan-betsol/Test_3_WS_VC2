@@ -1,0 +1,204 @@
+table vwResourceDetails
+	lineageTag: 33bf578b-ed9d-42e2-9d75-74026602818c
+
+	column ResourceId
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eb48b7c5-afae-49d5-aec8-2623e42053d1
+		summarizeBy: none
+		sourceColumn: ResourceId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2445e0d7-f147-4a3f-8d10-cbcca2997b41
+		summarizeBy: none
+		sourceColumn: ProviderCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WKHours
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c107f3f-176a-4f45-92e9-c3aa7d621aa1
+		summarizeBy: none
+		sourceColumn: WKHours
+
+		annotation SummarizationSetBy = User
+
+	column WKGoals
+		dataType: double
+		lineageTag: e7b225c1-52ff-4788-9544-943d1f602628
+		summarizeBy: none
+		sourceColumn: WKGoals
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Username
+		dataType: string
+		lineageTag: 41fde519-7351-42bc-877a-365f523c9732
+		summarizeBy: none
+		sourceColumn: Username
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastLoginDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2a2f62c7-ab46-4de0-9f91-125e98d3b326
+		summarizeBy: none
+		sourceColumn: LastLoginDate
+
+		variation Variation
+			isDefault
+			relationship: 4c322056-752f-415e-9687-60a96db63108
+			defaultHierarchy: LocalDateTable_b5dff20c-6a94-4fc7-a314-22961c5473aa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PreferredFacility
+		dataType: string
+		lineageTag: c1e10752-8fdf-445e-9fe6-3cf2f3778e1e
+		summarizeBy: none
+		sourceColumn: PreferredFacility
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: dc9b4596-5c31-4583-839e-0c05eb3ede73
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 5022241a-f88e-43d3-99c5-2738d9798cfe
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column WkAptGoals
+		dataType: int64
+		formatString: 0
+		lineageTag: dad70a28-0d57-40bc-aa5c-97aa715c0187
+		summarizeBy: sum
+		sourceColumn: WkAptGoals
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Clinician (Goal)'
+		dataType: string
+		lineageTag: 5a521668-8f38-4317-8ecc-34b30eb839e0
+		summarizeBy: none
+		sourceColumn: Clinician (Goal)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: ec33e504-ab20-411f-81be-6a6885738867
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategory
+		dataType: string
+		lineageTag: 701cd19c-c798-4f65-883e-e9f5d5d322d7
+		summarizeBy: none
+		sourceColumn: ProviderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column HireDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: b06ca402-e653-4567-8792-4fa8158bd8f2
+		summarizeBy: none
+		sourceColumn: HireDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column WeeksDiff
+		dataType: int64
+		formatString: 0
+		lineageTag: 76661c90-0c65-4d6e-ae6c-374daed6cdcd
+		summarizeBy: sum
+		sourceColumn: WeeksDiff
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeeksToMature
+		dataType: int64
+		formatString: 0
+		lineageTag: df51cf32-48e7-4a92-b641-923088cc1a23
+		summarizeBy: sum
+		sourceColumn: WeeksToMature
+
+		annotation SummarizationSetBy = Automatic
+
+	column MatureCategory
+		dataType: string
+		lineageTag: 45d4cf57-c11a-415f-a183-ee3f9faa7bd8
+		summarizeBy: none
+		sourceColumn: MatureCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProCatReduced
+		dataType: int64
+		formatString: 0
+		lineageTag: 97f685c7-83ed-4d55-844f-58e4e9c28e83
+		summarizeBy: sum
+		sourceColumn: ProCatReduced
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceEmail
+		dataType: string
+		lineageTag: f4c99d18-1dee-493f-9401-a0b790e7cc10
+		summarizeBy: none
+		sourceColumn: ResourceEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: b4b21372-fd83-433c-9d43-90be12e5238c
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwResourceDetails-ad773f72-0261-4dcd-a184-e9a878925d33 = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwResourceDetails = Source{[Schema="dbo",Item="vwResourceDetails"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwResourceDetails,{{"ResourceId", Int64.Type}, {"PracticeId", Int64.Type}, {"ResourceType", Int64.Type}, {"FirstName", type text}, {"LastName", type text}, {"ProviderCategoryID", Int64.Type}, {"Username", type text}, {"LastLoginDate", type date}, {"PreferredFacility", type text}, {"Market", type text}, {"IsPreferredFaclity", type logical}, {"Status", type text}, {"WKHours", Int64.Type}, {"WKGoals", type number}, {"WkAptGoals", Int64.Type}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Changed Type",{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"Full Name"),
+				    #"Removed Columns" = Table.RemoveColumns(#"Merged Columns",{"PracticeId", "ResourceType", "IsPreferredFaclity"}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Removed Columns", "Clinician (Goal)", each Text.Combine({[Full Name], " (", Text.From([WkAptGoals]), ")"}), type text)
+				in
+				    #"Inserted Merged Column"
+
+	annotation PBI_ResultType = Exception
+

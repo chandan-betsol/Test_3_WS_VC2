@@ -1,0 +1,228 @@
+table vwClinicalAnalytics
+	lineageTag: f52a6696-f1cb-4236-a44d-ff63861f445f
+
+	column PatientId
+		dataType: int64
+		formatString: 0
+		lineageTag: 7802091e-246a-45a9-b891-6b04f70749bd
+		summarizeBy: none
+		sourceColumn: PatientId
+
+		annotation SummarizationSetBy = User
+
+	column DOB
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 99555cd8-a883-4a3f-83f8-2b305e7a7776
+		summarizeBy: none
+		sourceColumn: DOB
+
+		variation Variation
+			isDefault
+			relationship: 2307aafa-9283-4f79-9ee1-46280fc4aaab
+			defaultHierarchy: LocalDateTable_d6d2cdb8-6742-4fd9-bf7e-44a0520ffc66.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 56f18679-b1fb-419e-9dbd-31a845974519
+		summarizeBy: none
+		sourceColumn: Age
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column RangeAge
+		dataType: string
+		lineageTag: 83e0f3f8-ec02-4ba9-a204-17e3760f617d
+		summarizeBy: none
+		sourceColumn: RangeAge
+		sortByColumn: 'Sort Col Age'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: a8ea7312-08f6-484e-a55e-ffe7f1265644
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangeVisit
+		dataType: string
+		lineageTag: 8f8beccc-a56a-4a2b-a551-c804bd61e229
+		summarizeBy: none
+		sourceColumn: RangeVisit
+		sortByColumn: 'Sort Col Visits'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderType
+		dataType: string
+		lineageTag: c3de7328-2f09-4415-9fbf-943a379119f7
+		summarizeBy: none
+		sourceColumn: ProviderType
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeTreatment
+		dataType: int64
+		formatString: 0
+		lineageTag: 31f375b0-d8de-49b3-a6e5-a0040ba76509
+		summarizeBy: sum
+		sourceColumn: TimeTreatment
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstVisitAdherence
+		dataType: string
+		lineageTag: bac56da9-76b7-4043-89ff-8d1908c4b2b7
+		summarizeBy: none
+		sourceColumn: FirstVisitAdherence
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullName
+		dataType: string
+		lineageTag: 74d4a514-31c9-4e66-8454-a41af121ee18
+		summarizeBy: none
+		sourceColumn: FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadSource
+		dataType: string
+		lineageTag: e40c396a-6153-4a5d-b7d7-584775b32e56
+		summarizeBy: none
+		sourceColumn: LeadSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReferralType
+		dataType: string
+		lineageTag: 9bb3dfcc-3a73-4f1e-bd5c-af27f95d2f4b
+		summarizeBy: none
+		sourceColumn: ReferralType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Facility
+		dataType: string
+		lineageTag: 805b7d6c-0099-45f9-94b3-51de7f1175ea
+		summarizeBy: none
+		sourceColumn: Facility
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: e6f71ba0-d511-4f7d-ae3a-f000f664554f
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column TherapyVisits
+		dataType: int64
+		formatString: 0
+		lineageTag: d1daaf5f-8943-4b12-9d55-b92d6fafae06
+		summarizeBy: sum
+		sourceColumn: TherapyVisits
+
+		annotation SummarizationSetBy = Automatic
+
+	column PsychVisits
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b64ca99-b8f3-47c6-909b-2c5da54ace5d
+		summarizeBy: sum
+		sourceColumn: PsychVisits
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalVisits
+		dataType: int64
+		formatString: 0
+		lineageTag: 752fa58f-9b54-4428-9e6c-5620a1cc27be
+		summarizeBy: sum
+		sourceColumn: TotalVisits
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cohort
+		dataType: string
+		lineageTag: 7ca76b85-07f0-451a-9ae3-ea64de2997dd
+		summarizeBy: none
+		sourceColumn: Cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Col Visits'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 60ff8f21-4084-4c60-aa39-caa35d66c179
+		summarizeBy: sum
+		sourceColumn: Sort Col Visits
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Col Age'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fa7a45fd-756d-4826-a074-324dce7901c2
+		summarizeBy: sum
+		sourceColumn: Sort Col Age
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwClinicalAnalytics-494d5b03-4a7c-4c97-9af0-9613a802eb28 = m
+		mode: import
+		queryGroup: 'FACT\Clinical Analytics'
+		source = ```
+				let
+				    Source = Sql.Database( ServerName, DBName),
+				    dbo_vwClinicalAnalytics = Source{[Schema="dbo",Item="vwClinicalAnalyticsCombined"]}[Data],
+				    #"Merged Columns" = Table.CombineColumns(dbo_vwClinicalAnalytics,{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"FullName"),
+				    Added_Sorter_Visits = Table.AddColumn(#"Merged Columns", "Sort Col Visits", each if [RangeVisit] = "1+ Visits" then 1 else if [RangeVisit] = "6+ Visits" then 3 else if [RangeVisit] = "2+ Visits" then 2 else if [RangeVisit] = "10 + Visits" then 4 else 99, Int64.Type),
+				    #"Removed Duplicates" = Table.Distinct(Added_Sorter_Visits, {"PatientId"}),
+				    #"Added_Sorter" = Table.AddColumn(
+				        #"Removed Duplicates", "Sort Col Age", each 
+				            if [RangeAge] = "(01-17 yrs)" then 10 
+				            else if [RangeAge] = "(18-25 yrs)" then 20 
+				            else if [RangeAge] = "(26-30 yrs)" then 30
+				            else if [RangeAge] = "(31-35 yrs)" then 40 
+				            else if [RangeAge] = "(36-40 yrs)" then 50 
+				            else if [RangeAge] = "(41-45 yrs)" then 60 
+				            else if [RangeAge] = "(46-50 yrs)" then 70 
+				            else if [RangeAge] = "(51-55 yrs)" then 80 
+				            else if [RangeAge] = "(56-60 yrs)" then 90 
+				            else if [RangeAge] = "(>60 yrs)" then 100 
+				            else null, 
+				        Int64.Type
+				        ),
+				    #"Replaced Value" = Table.ReplaceValue(#"Added_Sorter","(","",Replacer.ReplaceText,{"RangeAge"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",")","",Replacer.ReplaceText,{"RangeAge"})
+				in
+				    #"Replaced Value1"
+				```
+
+	annotation PBI_ResultType = Exception
+

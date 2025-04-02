@@ -1,0 +1,67 @@
+table vwPanelVisitType
+	lineageTag: ea53336e-2af9-4568-815f-8c51661d2b2a
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: 8932c56f-6ade-4840-9698-6df860587b19
+		summarizeBy: none
+		sourceColumn: ResourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: a1e37ddf-fcaa-41f5-82eb-b11009bcda4f
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: ef37c4f9-223f-489c-9b0d-716fb6f101ce
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitType
+		dataType: string
+		lineageTag: 376f4593-29bc-43e8-892d-ad5868d151f6
+		summarizeBy: none
+		sourceColumn: VisitType
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalVisits
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c9719e6-60dc-4111-94b6-0fcfbcdefcf7
+		summarizeBy: sum
+		sourceColumn: TotalVisits
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActiveVisits
+		dataType: int64
+		formatString: 0
+		lineageTag: 79033269-eacd-456b-9711-acbe9d9028ec
+		summarizeBy: sum
+		sourceColumn: ActiveVisits
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwPanelVisitType = m
+		mode: import
+		queryGroup: FACT\Panel
+		source =
+				let
+				    Source = Source,
+				    #"Filtered Rows" = Table.SelectRows(Source, each Text.Contains([Name], "Panel") and Text.Contains([Name], "Combined")),
+				    dbo_vwSumClinicianPanelVisitType = #"Filtered Rows"{[Schema="dbo",Item="vwSumClinicianPanelVisitTypeCombined"]}[Data]
+				in
+				    dbo_vwSumClinicianPanelVisitType
+
+	annotation PBI_ResultType = Exception
+

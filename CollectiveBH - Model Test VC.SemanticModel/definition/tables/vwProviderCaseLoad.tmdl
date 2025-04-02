@@ -1,0 +1,68 @@
+table vwProviderCaseLoad
+	lineageTag: 507a2fba-4631-448d-8c1b-5d824779e144
+
+	column WeekEnd
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6a42a6fc-4fe5-40ba-bae1-19ee1340624b
+		summarizeBy: none
+		sourceColumn: WeekEnd
+
+		variation Variation
+			isDefault
+			relationship: ac63bdc6-c9e7-4b38-a704-4548cf3f3367
+			defaultHierarchy: LocalDateTable_302c2acc-1e37-4cfb-afd4-d9cb0aa66d6a.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FacilityName
+		dataType: string
+		lineageTag: fb365fd4-1d33-407f-8d74-a54f466f46a4
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategory
+		dataType: string
+		lineageTag: 582788b4-250d-4d19-89f6-0349e93d9be5
+		summarizeBy: none
+		sourceColumn: ProviderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column UniquePats
+		dataType: int64
+		formatString: 0
+		lineageTag: 3aaf77ce-b9ae-4ded-95d2-fd97ff5e1b93
+		summarizeBy: sum
+		sourceColumn: UniquePats
+
+		annotation SummarizationSetBy = Automatic
+
+	column resourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: 03697882-1a80-4992-8096-2e7b392fab2d
+		summarizeBy: none
+		sourceColumn: resourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwProviderCaseLoad-be450e08-9bcc-4264-a58a-68134f51aa7e = m
+		mode: import
+		queryGroup: FACT\Clinical
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwProviderCaseLoad = Source{[Schema="dbo",Item="vwProviderCaseLoad"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwProviderCaseLoad,{{"resourceId", Int64.Type}, {"UniquePats", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+
