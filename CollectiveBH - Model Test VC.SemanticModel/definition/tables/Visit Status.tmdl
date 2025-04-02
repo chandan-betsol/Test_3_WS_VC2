@@ -1,0 +1,49 @@
+table 'Visit Status'
+	lineageTag: 5917f6b0-df43-4362-9688-355deb6b80ca
+
+	column 'Visit Status'
+		lineageTag: c9c206a6-80ea-459d-ac2c-c19718beb0dd
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Visit Status Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Visit Status Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Visit Status Fields'
+		isHidden
+		lineageTag: f12fb5e5-ef4b-4e6e-aea3-318dda4aedcf
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Visit Status Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Visit Status Order'
+		isHidden
+		formatString: 0
+		lineageTag: 93f3a26f-185e-4ec2-bae7-f6ccbbdbeda3
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Visit Status' = calculated
+		mode: import
+		source =
+				{
+				    ("Completed & Scheduled Visits", NAMEOF('vwVisitTrendByResourceNew'[Completed & Scheduled Visits]), 0),
+				    ("Completed Visits", NAMEOF('vwVisitTrendByResourceNew'[Completed Visits]), 1),
+				    ("Scheduled Visits", NAMEOF('vwVisitTrendByResourceNew'[Scheduled Visits]), 2)
+				}
+
+	annotation PBI_Id = 54680b8a5c384f5999b0eec7e86a7774
+

@@ -1,0 +1,32 @@
+table DurationLookup
+	lineageTag: 0ea6cd30-5b89-40c1-8696-3f4ade5af5d5
+
+	column DurationGroup
+		dataType: string
+		lineageTag: 965610f6-f67a-487d-aea7-13a4dd7f0946
+		summarizeBy: none
+		sourceColumn: DurationGroup
+		sortByColumn: SortOrder
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		dataType: string
+		lineageTag: 9e7d3d83-a745-4591-a71d-c379194f4816
+		summarizeBy: none
+		sourceColumn: SortOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DurationLookup = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wiik1MDBOVjCxUMjILy0qVtJRMlSK1YlWMtI1VXBJrAQJGIEFTHUNDWAixmARQwNdY7iQCVjI2EBbIQUiYKoUGwsA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [DurationGroup = _t, SortOrder = _t])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
