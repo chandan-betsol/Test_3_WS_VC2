@@ -1,0 +1,125 @@
+table vwClaimAnalysisDtl
+	lineageTag: c7b3179e-d9d3-4987-9667-4ace297439c3
+
+	column EncounterID
+		dataType: int64
+		formatString: 0
+		lineageTag: 27b241a8-6b6a-4a93-ab85-d691461904a6
+		summarizeBy: count
+		sourceColumn: EncounterID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientID
+		dataType: int64
+		formatString: 0
+		lineageTag: dad7b968-6780-447e-99b6-b622589583ac
+		summarizeBy: none
+		sourceColumn: PatientID
+
+		annotation SummarizationSetBy = User
+
+	column FacilityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 023c01f1-c40a-49d5-a37f-1b3a5f211263
+		summarizeBy: none
+		sourceColumn: FacilityID
+
+		annotation SummarizationSetBy = User
+
+	column ProviderCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: b15d6125-6ea9-456c-807d-b40994fa9bce
+		summarizeBy: count
+		sourceColumn: ProviderCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: fe20f71d-b151-438e-87fd-2296ebbfbc59
+		summarizeBy: none
+		sourceColumn: EncounterDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 979359b1-8afb-4a79-a629-09939b35f29e
+		summarizeBy: sum
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpectedAmount
+		dataType: decimal
+		lineageTag: 92a3eeb9-8be4-4f69-99b2-4570e60ab398
+		summarizeBy: sum
+		sourceColumn: ExpectedAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cpt
+		dataType: string
+		lineageTag: e2a70051-b0fe-46f9-98a1-ff9e8b93907e
+		summarizeBy: none
+		sourceColumn: cpt
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategory
+		dataType: string
+		lineageTag: 081b8d53-a6dc-4235-bd3b-4e3d4a88b65b
+		summarizeBy: none
+		sourceColumn: ProviderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullName
+		dataType: string
+		lineageTag: baefce9e-53cd-49d9-a56d-dac8b3227a20
+		summarizeBy: none
+		sourceColumn: FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServiceProviderId
+		dataType: int64
+		formatString: 0
+		lineageTag: 459946a7-5995-400f-8bb4-6dca5241b0ee
+		summarizeBy: count
+		sourceColumn: ServiceProviderId
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitType
+		dataType: string
+		lineageTag: bae8c8de-03e9-49e0-b69c-70cf23e129dc
+		summarizeBy: none
+		sourceColumn: VisitType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwClaimAnalysisDtl-97d98fdd-ae1a-4bb8-85b1-ffc9ef081c70 = m
+		mode: import
+		queryGroup: Settings
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    dbo_vwClaimAnalysisDtl = Source{[Schema="dbo",Item="vwClaimAnalysisDtl"]}[Data],
+				    #"Merged Columns" = Table.CombineColumns(dbo_vwClaimAnalysisDtl,{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"FullName")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_ResultType = Exception
+

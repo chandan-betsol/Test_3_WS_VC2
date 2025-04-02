@@ -1,0 +1,372 @@
+table cg_Financial_Statement
+	lineageTag: cce4b42c-8de7-4787-98df-ff11c35013f9
+
+	calculationGroup
+
+		calculationItem Revenue = ```
+				Blank()
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ [4000 - Therapy Revenue]' = [4000 - Therapy Revenue]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [4100 - Psychiatric Revenue]' = [4100 - Psychiatric Revenue]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [4800 - Psychiatric Contractuals Expense]' = [4800 - Psychiatric Contractuals Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [4840 - Psychiatric Patient Credit Refunds]' = [4840 - Psychiatric Patient Credit Refunds]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [4900 - Therapy Contractuals Expense]' = [4900 - Therapy Contractuals Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [4940 - Therapy Patient Credit Refunds]' = [4940 - Therapy Patient Credit Refunds]
+
+		calculationItem 'Total Revenue' = [Revenue_Total]
+
+		calculationItem '‎ ' = blank()
+
+		calculationItem COGS = Blank()
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5000 - COGS - Psychiatric Salaries]' = [5000 - COGS - Psychiatric Salaries]
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5010 - COGS - Psychiatric Bonus]' = [5010 - COGS - Psychiatric Bonus]
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎‎[5020 - COGS - Psychiatric Contract Labor]' = [5020 - COGS - Psychiatric Contract Labor]
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5030 - COGS - Psychiatric Payroll Taxes]' = ```
+				[5030 - COGS - Psychiatric Payroll Taxes]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5040 - COGS - Psychiatric PTO]' = [5040 - COGS - Psychiatric PTO]
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5050 - COGS - Psychiatric 401(k) Employer Match]' = ```
+				[5050 - COGS - Psychiatric 401(k) Employer Match]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5055 - COGS - Psychiatric HSA Employer Contribution]' = ```
+				[5055 - COGS - Psychiatric HSA Employer Contribution]
+				
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5060 - COGS - Psychiatric Health Insurance]' = ```
+				[5060 - COGS - Psychiatric Health Insurance]
+				
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5065 - COGS - Psychiatric Dental/Vision Insurance]' = ```
+				[5065 - COGS - Psychiatric Dental/Vision Insurance]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5070 - COGS - Psychiatric Disability Insurance]' = ```
+				[5070 - COGS - Psychiatric Disability Insurance]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5075 - COGS - Psychiatric Life Insurance]' = ```
+				[5075 - COGS - Psychiatric Life Insurance]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5100 - COGS - Therapy Salaries]' = ```
+				[5100 - COGS - Therapy Salaries]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5093 - COGS - Psychiatric COBRA Benefit]' = ```
+				[5093 - COGS - Psychiatric COBRA Benefit]
+				
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5110 - COGS - Therapy Bonus]' = ```
+				[5110 - COGS - Therapy Bonus]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5080 - COGS - Psychiatric Workers'' Compensation]' = ```
+				[5080 - COGS - Psychiatric Workers' Compensation]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5150 - COGS - Therapy 401(k) Employer Match]' = ```
+				[5150 - COGS - Therapy 401(k) Employer Match]
+				
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5095 - COGS - Psychiatric Other Benefits]' = ```
+				[5095 - COGS - Psychiatric Other Benefits]
+				
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5140 - COGS - Therapy PTO]' = ```
+				[5140 - COGS - Therapy PTO]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5091 - COGS - Psychiatric Hospital Benefit]' = ```
+				[5091 - COGS - Psychiatric Hospital Benefit]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5092 - COGS - Psychiatric Critical Illness Benefit]' = ```
+				[5092 - COGS - Psychiatric Critical Illness Benefit]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5094 - COGS - Psychiatric Adcident Benefit]' = ```
+				[5094 - COGS - Psychiatric Adcident Benefit]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5155 - COGS - Therapy HSA Employer Contribution]' = ```
+				[5155 - COGS - Therapy HSA Employer Contribution]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5120 - COGS - Therapy Contract Labor]' = ```
+				[5120 - COGS - Therapy Contract Labor]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5160 - COGS - Therapy Health Insurance]' = ```
+				[5160 - COGS - Therapy Health Insurance]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5165 - COGS - Therapy Dental/Vision Insurance]' = ```
+				[5165 - COGS - Therapy Dental/Vision Insurance]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5170 - COGS - Therapy Disability Insurance]' = ```
+				[5170 - COGS - Therapy Disability Insurance]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5175 - COGS - Therapy Life Insurance]' = ```
+				[5175 - COGS - Therapy Life Insurance]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5180 - COGS - Therapy Workers’ Compensation]' = ```
+				[5180 - COGS - Therapy Workers' Compensation]
+				
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5191 - COGS - Therapy Hospital Benefit]' = ```
+				[5191 - COGS - Therapy Hospital Benefit]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5192 - COGS - Therapy Critical Illness Benefit]' = ```
+				[5192 - COGS - Therapy Critical Illness Benefit]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5193 - COGS - Therapy COBRA Benefit]' = ```
+				[5193 - COGS - Therapy COBRA Benefit]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5194 - COGS - Therapy Accident Benefit]' = ```
+				[5194 - COGS - Therapy Accident Benefit]
+				
+				```
+
+		calculationItem ' ‎ ‎ ‎ ‎ ‎‎‎[5195 - COGS - Therapy Other Benefits]' = [5195 - COGS - Therapy Other Benefits]
+
+		calculationItem 'Total COGS' = [COGS]
+
+		calculationItem ‎ = blank()
+
+		calculationItem 'Total Gross Profit' = [Total_GrossProfit]
+
+		calculationItem 'Gross Margin' = [Total_GrossMargin]
+
+			formatStringDefinition = "0%"
+
+		calculationItem '‎  ' = blank()
+
+		calculationItem 'Operating Expenses' = Blank()
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6000 - Salaries]' = [6000 - Salaries]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6010 - Bonus]' = [6010 - Bonus]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6020 - Contract Labor]' = [6020 - Contract Labor]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6030 - Payroll Taxes]' = [6030 - Payroll Taxes]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6040 - PTO]' = [6040 - PTO]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6050 - 401(k) Employer Match]' = [6050 - 401(k) Employer Match]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6055 - HSA Employer Contribution]' = [6055 - HSA Employer Contribution]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6060 - Health Insurance]' = [6060 - Health Insurance]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6065 - Dental/Vision Insurance]' = [6065 - Dental/Vision Insurance]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6070 - Disability Insurance]' = [6070 - Disability Insurance]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6075 - Life Insurance]' = [6075 - Life Insurance]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6080 - Workers'' Compensation]' = [6080 - Workers' Compensation]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6091 - Hospital Benefit]' = [6091 - Hospital Benefit]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6092 - Critical Illness Benefit]' = [6092 - Critical Illness Benefit]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6093 - COBRA Benefit]' = [6093 - COBRA Benefit]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6094 - Accident Benefit]' = [6094 - Accident Benefit]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6095 - Other Benefits]' = [6095 - Other Benefits]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6100 - RCM Contract Fees]' = [6100 - RCM Contract Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6120 - Electronic Health Record Fees]' = [6120 - Electronic Health Record Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6150 - Office Lease]' = [6150 - Office Lease]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6200 - Marketing Agency Service Fees]' = [6200 - Marketing Agency Service Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6220 - Purchased Advertising]' = [6220 - Purchased Advertising]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6300 - Accounting Support Fees]' = [6300 - Accounting Support Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6320 - Tax Prep Fees]' = [6320 - Tax Prep Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6330 - Legal Fees]' = [6330 - Legal Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6340 - Consulting Fees]' = [6340 - Consulting Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6350 - IT Support Services]' = [6350 - IT Support Services]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6360 - Technology Consulting Fees]' = [6360 - Technology Consulting Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6370 - Other Professional Fees]' = [6370 - Other Professional Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6400 - Insurance]' = [6400 - Insurance]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6450 - Recruitment Fees]' = [6450 - Recruitment Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6500 - Airfare]' = [6500 - Airfare]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6510 - Lodging]' = [6510 - Lodging]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6520 - Travel (non-airfare)]' = [6520 - Travel (non-airfare)]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6530 - Meals & Entertainment]' = [6530 - Meals & Entertainment]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6540 - Other Travel Expense]' = [6540 - Other Travel Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6600 - Office Supplies]' = [6600 - Office Supplies]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6700 - Continuing Education & Other Clinical Education]' = [6700 - Continuing Education & Other Clinical Education]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6705 - Clinical Licenses & Other Permits]' = [6705 - Clinical Licenses & Other Permits]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6710 - Payroll Processing Fees]' = [6710 - Payroll Processing Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6720 - Marketing Materials]' = [6720 - Marketing Materials]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6730 - Postage & Delivery]' = [6730 - Postage & Delivery]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6735 - Dues & Subscriptions]' = [6735 - Dues & Subscriptions]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6745 - Gifts]' = [6745 - Gifts]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6750 - Software Subscriptions]' = [6750 - Software Subscriptions]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6755 - Other Technology Expense]' = [6755 - Other Technology Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6760 - Computer Rental]' = [6760 - Computer Rental]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6765 - Equipment Rental]' = [6765 - Equipment Rental]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6770 - Minor fixed asset costs (<$1K)]' = [6770 - Minor fixed asset costs (<$1K)]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6775 - Non-clinical Licenses and Prof. Fees]' = [6775 - Non-clinical Licenses and Prof. Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6780 - PRIVIA Fees]' = [6780 - PRIVIA Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6785 - Employee Education/Training]' = [6785 - Employee Education/Training]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6790 - Employee Conferences]' = [6790 - Employee Conferences]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6795 - Employee Training Events]' = [6795 - Employee Training Events]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6800 - Business Licenses]' = [6800 - Business Licenses]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6810 - Bank Charges]' = [6810 - Bank Charges]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6815 - Finance Charges]' = [6815 - Finance Charges]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6820 - Miscellaneous Expense]' = [6820 - Miscellaneous Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6825 - Credit Card Fees]' = [6825 - Credit Card Fees]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6900 - Utilities]' = [6900 - Utilities]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6915 - IT Subscriptions & Support]' = [6915 - IT Subscriptions & Support]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6920- Repairs & Maintenance]' = [6920 - Repairs & Maintenance]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6930 - Other Facilities Costs]' = [6930 - Other Facilities Costs]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [6990 - Bad Debt Expense]' = [6990 - Bad Debt Expense]
+
+		calculationItem 'Total Operating Expenses' = [OperatingExpensesTotal]
+
+		calculationItem '‎    ' = blank()
+
+		calculationItem 'Total EBITDA' = [Total_EBITDA]
+
+		calculationItem '‎      ' = blank()
+
+		calculationItem 'Other Income & Expense' = Blank()
+
+		calculationItem ' ‎ ‎ ‎ ‎ [9010 - Depreciation Expense]' = [9010 - Depreciation Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [9030 - Interest Expense]' = [9030 - Interest Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [9040 - Income Tax Expense]' = [9040 - Income Tax Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [9050 - Other Expense]' = [9050 - Other Expense]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [9080 - Interest Income]' = [9080 - Interest Income]
+
+		calculationItem ' ‎ ‎ ‎ ‎ [9090 - Other Income]' = [9090 - Other Income]
+
+		calculationItem 'Total Other Income & Expense' = [TotalOIE]
+
+		calculationItem '‎        ' = blank()
+
+		calculationItem 'Total Net Income (Loss)' = [Total_NetIncome(Loss)]
+
+	column Name
+		dataType: string
+		lineageTag: c2649f77-3187-4fb5-8eb6-280d52d5c999
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: c96f9054-473f-45b6-9db0-6a04837773af
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

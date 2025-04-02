@@ -1,0 +1,203 @@
+table vwClaimDenials
+	lineageTag: a1bfe9d6-c40c-48f7-904e-bebc9c95937c
+
+	column FacilityName
+		dataType: string
+		lineageTag: f36cb48d-f373-4471-b09b-2451602bc507
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 64ef47c8-25e8-43fe-9c16-cf5c0094585f
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 69e5bd7c-9fb3-405b-b7fe-5e950d935fb5
+		summarizeBy: none
+		sourceColumn: DOB
+
+		variation Variation
+			isDefault
+			relationship: 2e991f5d-1eaf-46fa-9f21-33a58f523fa5
+			defaultHierarchy: LocalDateTable_7b6fbf2b-b138-45be-8b75-f1244af8b0d0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Cpt
+		dataType: string
+		lineageTag: a8f7bf18-50ca-473d-8457-91b4b551603a
+		summarizeBy: none
+		sourceColumn: Cpt
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateOfService
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 725d2348-4688-4c6e-88de-2ba6946175e0
+		summarizeBy: none
+		sourceColumn: DateOfService
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column PayerName
+		dataType: string
+		lineageTag: a02066d7-6215-4a87-ad64-1e26ba179520
+		summarizeBy: none
+		sourceColumn: PayerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PolicyNumber
+		dataType: string
+		lineageTag: e8798114-f7c8-454f-b57c-fef06f0901ab
+		summarizeBy: none
+		sourceColumn: PolicyNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChargeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b91064a-c111-47bb-870d-283f27d40661
+		summarizeBy: count
+		sourceColumn: ChargeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fee
+		dataType: double
+		lineageTag: 1b598606-372b-45ec-aeeb-fa0b45cf77c7
+		summarizeBy: sum
+		sourceColumn: Fee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Description
+		dataType: string
+		lineageTag: acfeabcf-8d1a-4dc0-97ad-20f7c65abcf4
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: int64
+		formatString: 0
+		lineageTag: 33881fc7-1579-4409-a658-1261cfc9ab1b
+		summarizeBy: sum
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReasonCodeAmount
+		dataType: double
+		lineageTag: be451c65-2f41-4b29-a68c-f9e9fe6f95fc
+		summarizeBy: sum
+		sourceColumn: ReasonCodeAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PostingDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 3b691f7e-8170-4043-bddb-08d23a295df8
+		summarizeBy: none
+		sourceColumn: PostingDate
+
+		variation Variation
+			isDefault
+			relationship: 20cbb3ce-050a-4e35-89ca-1e3bd7f00e5d
+			defaultHierarchy: LocalDateTable_65f39b36-4332-47dc-bc8a-85173a28bfb0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Billing Full Name'
+		dataType: string
+		lineageTag: 42e0133c-a15d-4e07-8d5b-53a597ec5405
+		summarizeBy: none
+		sourceColumn: Billing Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Clinician Full Name'
+		dataType: string
+		lineageTag: 7c3b506b-4290-417a-b288-7634a1e9e46d
+		summarizeBy: none
+		sourceColumn: Clinician Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Full Name'
+		dataType: string
+		lineageTag: 2f919da4-85e7-4266-a883-b49efaacd33f
+		summarizeBy: none
+		sourceColumn: Patient Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Denial Code'
+		dataType: string
+		lineageTag: 59f7f635-ebe9-469a-9019-fd4069ed7ce9
+		summarizeBy: none
+		sourceColumn: Denial Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReasonID
+		dataType: int64
+		formatString: 0
+		lineageTag: ef68fc0d-e6e3-4fc0-823c-025ad90b8aca
+		summarizeBy: count
+		sourceColumn: ReasonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DenialCategory
+		dataType: string
+		lineageTag: fd645af8-91ff-40ba-961c-dcc2b72b3b31
+		summarizeBy: none
+		sourceColumn: DenialCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwClaimDenials = m
+		mode: import
+		queryGroup: Settings
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwClaimDenials = Source{[Schema="dbo",Item="vwClaimDenials"]}[Data],
+				    #"Merged Columns" = Table.CombineColumns(dbo_vwClaimDenials,{"BillingLastName", "BillingFirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"Billing Full Name"),
+				    #"Merged Columns1" = Table.CombineColumns(#"Merged Columns",{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"Clinician Full Name"),
+				    #"Merged Columns2" = Table.CombineColumns(#"Merged Columns1",{"PatientLastName", "PatientFirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"Patient Full Name"),
+				    #"Merged Columns3" = Table.CombineColumns(#"Merged Columns2",{"GroupCode", "ReasonCode"},Combiner.CombineTextByDelimiter(" - ", QuoteStyle.None),"Denial Code")
+				in
+				    #"Merged Columns3"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,52 @@
+table Parameter_Marketing
+	lineageTag: 1d1e4a40-f555-4c85-a0f1-1ba7cbc95987
+
+	column Parameter
+		lineageTag: 651e6d85-a3be-40f3-8946-550c65514e79
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 310eb6d6-e35d-48a9-800d-4681ae1a8b95
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 5879f362-d0ee-4a68-982e-cc31c6e764cc
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter_Marketing-bc7462f2-40d5-49d1-b1a6-93534c9fddcf = calculated
+		mode: import
+		source =
+				{
+				    ("Facility", NAMEOF('vwCollectiveLead'[Facility]), 0),
+				    ("Source", NAMEOF('vwCollectiveLead'[LeadSource]), 1),
+				    ("Insurance", NAMEOF('vwCollectiveLead'[Insurance]), 2),
+				    --("Market", NAMEOF('vwCollectiveLead'[Market]), 3),
+				    ("Modality", NAMEOF('vwCollectiveLead'[Modality]), 3),
+				    ("Referral Type", NAMEOF('vwCollectiveLead'[ReferralType]), 4)
+				}
+
+	annotation PBI_Id = 09fa5a2890fa40c79944c2b9e3566980
+

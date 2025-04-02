@@ -1,0 +1,96 @@
+table cfgWeekDays
+	lineageTag: 3860602b-fac8-4d00-a122-6d684ec0b543
+
+	column YearMonthWeek
+		dataType: string
+		lineageTag: ec0fee65-302f-46b2-a06e-1ccb590e8e40
+		summarizeBy: none
+		sourceColumn: YearMonthWeek
+		sortByColumn: StartWeek
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: f163a6cf-ccb0-430d-8a9d-6ab35d190de4
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessDays
+		dataType: int64
+		formatString: 0
+		lineageTag: 11e25597-c3f3-4624-8047-db9172a1e225
+		summarizeBy: none
+		sourceColumn: BusinessDays
+
+		annotation SummarizationSetBy = User
+
+	column StartWeek
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 285c7b8b-b71d-43f1-aa1a-5d1004defd41
+		summarizeBy: none
+		sourceColumn: StartWeek
+
+		variation Variation
+			isDefault
+			relationship: 0d5b50cb-b2b8-4bba-9566-8a7c592b2b2b
+			defaultHierarchy: LocalDateTable_b44fa645-b579-48d9-8d5f-5b5a14bdcc25.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column EndWeek
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 016037b0-da4f-4952-849b-c201b887993a
+		summarizeBy: none
+		sourceColumn: EndWeek
+
+		variation Variation
+			isDefault
+			relationship: aadc0d6d-2c50-45ee-a8bb-38edfc6b9509
+			defaultHierarchy: LocalDateTable_f87430c1-52e4-465f-97fb-74d68d118cb5.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Full Week'
+		dataType: string
+		lineageTag: f770ee71-0b87-48c4-ad7f-e72738cf9cdd
+		summarizeBy: none
+		sourceColumn: Full Week
+		sortByColumn: StartWeek
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cfgWeekDays-863bd49d-682e-481a-94a7-b3c8a3ce1128 = m
+		mode: import
+		queryGroup: CFGs
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_cfgWeekDays = Source{[Schema="dbo",Item="cfgWeekDays"]}[Data],
+				    #"Inserted Merged Column" = Table.AddColumn(dbo_cfgWeekDays, "Full Week", each Text.Combine({Text.From([StartWeek], "es-AR"), Text.From([EndWeek], "es-AR")}, " - "), type text),
+				    #"Replaced Value" = Table.ReplaceValue(#"Inserted Merged Column","/","-",Replacer.ReplaceText,{"Month"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Exception
+
