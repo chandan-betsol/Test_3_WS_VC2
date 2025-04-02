@@ -1,0 +1,157 @@
+table vwProviderScheduleAnalytics
+	lineageTag: 284e195e-5d51-4b16-bac9-eae7b510c64d
+
+	column ApptType
+		dataType: string
+		lineageTag: 013508ef-2d55-45a4-beb3-c5add064b92e
+		summarizeBy: none
+		sourceColumn: ApptType
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitID
+		dataType: int64
+		formatString: 0
+		lineageTag: fc1a5452-a1a8-45ef-8e7c-afb116100e94
+		summarizeBy: count
+		sourceColumn: VisitID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: a15ddca6-08ee-49d2-806f-3a02f9e93ca1
+		summarizeBy: none
+		sourceColumn: StartTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column EndTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: cff42b40-8626-42db-a892-1d553d2c209b
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: fb837589-6519-4500-9090-5443f236984d
+		summarizeBy: sum
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRNNumber
+		dataType: string
+		lineageTag: 752dfb2f-91f7-46a2-955a-e3024f4d0703
+		summarizeBy: none
+		sourceColumn: MRNNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: de9d80f8-c20f-45e7-8138-62499768e5bb
+		summarizeBy: count
+		sourceColumn: ResourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: 33f0e064-1613-45ce-93c7-f0129c70af6d
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 99a934a1-8752-4754-af0b-6aaf0ce82263
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategory
+		dataType: string
+		lineageTag: 2a4d9726-ad38-4c22-8c50-75686634d776
+		summarizeBy: none
+		sourceColumn: ProviderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterType
+		dataType: string
+		lineageTag: df4f53eb-ce9c-4b4c-b7ad-a1521cc8839d
+		summarizeBy: none
+		sourceColumn: EncounterType
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitStatus
+		dataType: string
+		lineageTag: 9b5ea789-f958-4352-a5e2-5f65284a5daf
+		summarizeBy: none
+		sourceColumn: VisitStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column SvcProvFullName
+		dataType: string
+		lineageTag: d04c8875-00ab-4b10-98c2-eec243c88819
+		summarizeBy: none
+		sourceColumn: SvcProvFullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderScheduleDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 84bb46fd-7439-4462-a06b-8c5790b1c15f
+		summarizeBy: none
+		sourceColumn: ProviderScheduleDate
+
+		variation Variation
+			isDefault
+			relationship: 46d2f930-dc4c-4ad4-b6b0-eaa4e5cc7070
+			defaultHierarchy: LocalDateTable_256852f9-a93a-4327-b43b-66c77247517f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'ProviderScheduleDate - Text'
+		dataType: string
+		lineageTag: ac39dc7c-a8b7-43f5-83f4-e7c0046503d7
+		summarizeBy: none
+		sourceColumn: ProviderScheduleDate - Text
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwProviderScheduleAnalytics = m
+		mode: import
+		queryGroup: Settings
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwProviderScheduleAnalytics = Source{[Schema="dbo",Item="vwProviderScheduleAnalytics"]}[Data],
+				    #"Duplicated Column" = Table.DuplicateColumn(dbo_vwProviderScheduleAnalytics, "ProviderScheduleDate", "ProviderScheduleDate - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"ProviderScheduleDate - Copy", "ProviderScheduleDate - Text"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"ProviderScheduleDate - Text", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

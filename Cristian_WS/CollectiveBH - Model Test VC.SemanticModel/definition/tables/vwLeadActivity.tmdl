@@ -1,0 +1,337 @@
+table vwLeadActivity
+	lineageTag: 2bc5ec7a-50a0-4749-8c9f-4cbf0afffb07
+
+	measure _Interactions = ```
+			
+			    COUNTROWS(vwLeadActivity)
+			```
+		formatString: 0
+		lineageTag: 98ed270a-7a81-4f83-bb64-3cac82ed2853
+
+	measure _Leads = ```
+			
+			    DISTINCTCOUNT(vwLeadActivity[FullName])
+			```
+		formatString: #,0
+		lineageTag: af33ff8e-a9bf-498e-a566-e2dfeca27f28
+
+	measure _Leads_all = ```
+			
+			    CALCULATE(
+			        [_Leads],
+			        ALL(vwLeadActivity)
+			    )
+			```
+		formatString: #,0
+		lineageTag: ce3cd5c5-169a-4373-bc89-193b6bfd0eca
+
+	measure _Lead% = ```
+			
+			    DIVIDE( [_Leads] , [_Leads_all], 0)
+			```
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 2a5f1938-688f-430f-95f0-bd986e7936a6
+
+	column LeadStatus
+		dataType: string
+		lineageTag: c751613a-2041-4482-ad05-d0526d50bfe9
+		summarizeBy: none
+		sourceColumn: LeadStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clinician
+		dataType: string
+		lineageTag: c58b4a8f-9af3-430c-a728-569c9c2171a3
+		summarizeBy: none
+		sourceColumn: Clinician
+
+		annotation SummarizationSetBy = Automatic
+
+	column Facility
+		dataType: string
+		lineageTag: f725664a-f620-4a7c-b799-3cd73661e11f
+		summarizeBy: none
+		sourceColumn: Facility
+
+		annotation SummarizationSetBy = Automatic
+
+	column referralType
+		dataType: string
+		lineageTag: 9a4254b1-c3e2-4b76-b484-dc131d45ceff
+		summarizeBy: none
+		sourceColumn: referralType
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadSource
+		dataType: string
+		lineageTag: d8999f4e-ea79-45eb-ab9b-c373d33a8570
+		summarizeBy: none
+		sourceColumn: LeadSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: 578775f3-71a7-45f2-bcd3-c8fb894329c5
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaskSubType
+		dataType: string
+		lineageTag: ec9117d4-45fb-4b17-9267-6a1fc0700fed
+		summarizeBy: none
+		sourceColumn: TaskSubType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinsElapsed
+		dataType: int64
+		formatString: 0
+		lineageTag: 9af7cae3-b83b-4c08-8cc5-aa6884769f93
+		summarizeBy: sum
+		sourceColumn: MinsElapsed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"vwLeadActivity","TableItemName":"MinsElapsed (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column FullName
+		dataType: string
+		lineageTag: df768bd6-d90c-430a-a60a-2030518f0867
+		summarizeBy: none
+		sourceColumn: FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MinsElapsed (bins)' =
+			IF(
+				ISBLANK('vwLeadActivity'[MinsElapsed]),
+				BLANK(),
+				INT('vwLeadActivity'[MinsElapsed] / 10080) * 10080
+			)
+		formatString: 0
+		lineageTag: 7d31c2de-1235-45d8-af16-b7364b240c85
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "vwLeadActivity"
+				          }
+				        },
+				        "Property": "MinsElapsed"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 10080.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"v","Entity":"vwLeadActivity"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"v"}},"Property":"MinsElapsed"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"v"}},"Property":"MinsElapsed"}},"Size":10080.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column ElapsedTimeRange
+		dataType: string
+		lineageTag: 5a79e36f-73a0-4c00-859a-26d73f766f7e
+		summarizeBy: none
+		sourceColumn: ElapsedTimeRange
+
+		annotation SummarizationSetBy = Automatic
+
+	column InquiryDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f7cfd1ed-d6e0-471e-9e7e-3e1eca75aa7e
+		summarizeBy: none
+		sourceColumn: InquiryDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LeadDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 944a3633-9d32-48a5-ae15-852005eabac4
+		summarizeBy: none
+		sourceColumn: LeadDate
+
+		variation Variation
+			isDefault
+			relationship: bbb0bdea-6b0c-4461-87b2-8f6520d1fbbd
+			defaultHierarchy: LocalDateTable_dfeba114-6c66-4cd7-bc76-57868ba64e14.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LeadTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 6d153a03-7918-4882-9e77-decd08ca601d
+		summarizeBy: none
+		sourceColumn: LeadTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column ActivityDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2c1b42ea-982c-4007-9c39-dc5315de27a4
+		summarizeBy: none
+		sourceColumn: ActivityDate
+
+		variation Variation
+			isDefault
+			relationship: 2c3648a4-cd24-42a1-a471-cce39a1384a3
+			defaultHierarchy: LocalDateTable_b30895b8-eb48-44b7-9c7f-38e385a0f7b8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ActivityTime
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: fdc76a42-b3c8-4233-a9cd-1da6356b28b2
+		summarizeBy: none
+		sourceColumn: ActivityTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: e5ecfccb-7735-4144-a0e0-1a96793db70f
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column recordId
+		dataType: string
+		lineageTag: ff80e183-23fe-43aa-9102-f8eb6e8026a8
+		summarizeBy: none
+		sourceColumn: recordId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadDatetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b5cf7ead-dd93-439c-b092-b24cacccc51c
+		summarizeBy: none
+		sourceColumn: LeadDatetime
+
+		variation Variation
+			isDefault
+			relationship: 47896fab-a199-4269-9ee9-aedc9b04080c
+			defaultHierarchy: LocalDateTable_1f56a6c2-a889-488c-94ba-e7aaba61a924.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityDatetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7c2a0928-120a-45bf-947c-cdac23febc48
+		summarizeBy: none
+		sourceColumn: ActivityDatetime
+
+		variation Variation
+			isDefault
+			relationship: 45640062-1d50-43db-bfc1-79bc0a6d09b1
+			defaultHierarchy: LocalDateTable_dfe344d5-cfbf-4b47-9cb9-f6e944c04e13.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadDateNew
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d1d85242-1502-4d4c-bc0a-ae88128f62e0
+		summarizeBy: none
+		sourceColumn: LeadDateNew
+
+		variation Variation
+			isDefault
+			relationship: f512f39a-c310-409d-b3a7-b887d6258478
+			defaultHierarchy: LocalDateTable_a1d0b943-1468-4831-bf97-f5c55841d1d4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Lead Date Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4ee00948-b26e-4461-a98b-d379b82d22b3
+		summarizeBy: none
+		sourceColumn: Lead Date Time
+
+		variation Variation
+			isDefault
+			relationship: e2d1d188-7546-4ad8-9698-7842bc07c78f
+			defaultHierarchy: LocalDateTable_68e8925b-2dc0-441e-a4b2-8eed9236e98d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Date Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f2d932c4-c25e-44cb-a3bb-8701d93ce1f0
+		summarizeBy: none
+		sourceColumn: Activity Date Time
+
+		variation Variation
+			isDefault
+			relationship: 5d5dc511-6e93-47eb-bbab-7d37e8a60557
+			defaultHierarchy: LocalDateTable_0c430ed8-6d72-4bb8-96da-13d0d4233cff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadDateNew_
+		dataType: string
+		lineageTag: 6386ee81-4216-4eb6-8933-7d66ef53ff74
+		summarizeBy: none
+		sourceColumn: LeadDateNew_
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwLeadActivity-53572493-13cc-4278-9b4b-e602e14557e4 = m
+		mode: import
+		queryGroup: Exploration
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    SFO_vwLeadActivity = Source{[Schema="SFO",Item="vwLeadActivity"]}[Data],
+				    #"Merged Columns" = Table.CombineColumns(SFO_vwLeadActivity,{"LastName", "FirstName"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"FullName"),
+				    #"Inserted Year" = Table.AddColumn(#"Merged Columns", "Year", each Date.Year([InquiryDate]), Int64.Type),
+				    #"Filtered Rows" = Table.SelectRows(#"Inserted Year", each [Year] = 2023 or [Year] = 2024),
+				    #"Added Custom" = Table.AddColumn(#"Filtered Rows", "LeadDateNew", each if [LeadDate] > [InquiryDate] then [InquiryDate] else [LeadDate], type date),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Lead Date Time", each [LeadDateNew] & Time.From([LeadTime]),  type datetime  ),
+				    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "Activity Date Time", each [ActivityDate] & Time.From([ActivityTime]), type datetime),
+				    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "LeadDateNew_", each if [LeadDate] < [InquiryDate] then 1 else 0)
+				in
+				    #"Added Custom3"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

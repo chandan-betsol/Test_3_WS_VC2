@@ -1,0 +1,81 @@
+table cfgPayPeriodDetailed
+	lineageTag: 4dbd7097-f5eb-4521-8687-aaad648ca717
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 401f6664-1e17-40c4-a426-663a5bbd21cd
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 26ce1ce7-92c3-4169-8f68-d6b8ace3b485
+			defaultHierarchy: LocalDateTable_c4aa8dbf-7b6d-448f-9b5b-f4b856b7e8f5.'Date Hierarchy'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Period
+		dataType: string
+		lineageTag: d66ccd5e-5258-4ed3-a122-c158099beeb8
+		summarizeBy: none
+		sourceColumn: Period
+		sortByColumn: 'Period Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column PayDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 429bfbe5-bd94-4d7b-93c5-b68864ac9128
+		summarizeBy: none
+		sourceColumn: PayDate
+
+		variation Variation
+			isDefault
+			relationship: b82fb838-cdbd-4352-aff6-c47e01ca8829
+			defaultHierarchy: LocalDateTable_0a8d8612-17c8-4efa-a82b-8fad43aaa13d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Period Sort'
+		dataType: double
+		lineageTag: 8cf607c9-f5d4-4221-a3ab-c31ceb43b163
+		summarizeBy: sum
+		sourceColumn: Period Sort
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition cfgPayPeriodDetailed = m
+		mode: import
+		queryGroup: CFGs
+		source =
+				let
+				    Source = Source,
+				    dbo_cfgPayPeriodDetailed = Source{[Schema="dbo",Item="cfgPayPeriodDetailed"]}[Data],
+				    #"Inserted First Characters" = Table.AddColumn(dbo_cfgPayPeriodDetailed, "First Characters", each Text.Start([Period], 4), type text),
+				    #"Inserted Text After Delimiter" = Table.AddColumn(#"Inserted First Characters", "Text After Delimiter", each Text.AfterDelimiter(Text.From([Date], "en-US"), "-"), type text),
+				    #"Removed Columns" = Table.RemoveColumns(#"Inserted Text After Delimiter",{"Text After Delimiter"}),
+				    #"Inserted Text After Delimiter1" = Table.AddColumn(#"Removed Columns", "Text After Delimiter", each Text.AfterDelimiter([Period], "-"), type text),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Inserted Text After Delimiter1",{{"Text After Delimiter", type number}, {"First Characters", type number}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Period Sort", each [First Characters]*50+[Text After Delimiter]),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Added Custom",{"First Characters", "Text After Delimiter"})
+				in
+				    #"Removed Columns1"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+
