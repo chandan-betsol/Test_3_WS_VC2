@@ -1,0 +1,17 @@
+table dimPayerName
+	lineageTag: ff43d96f-9274-48ae-9f68-f6b9c2a8321a
+
+	column PayerName
+		lineageTag: cde58206-4644-4cba-bf4e-c7472de1b7b1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: vwSumPaymentDetailExtended[PayerName]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimPayerName = calculated
+		mode: import
+		source = DISTINCT(UNION(VALUES(vwSumPaymentDetailExtended[PayerName]),VALUES(vwSumPaymentPosting[PayerName])))
+
+	annotation PBI_Id = bd53b07b8bb341709aa244bcde76789a
+

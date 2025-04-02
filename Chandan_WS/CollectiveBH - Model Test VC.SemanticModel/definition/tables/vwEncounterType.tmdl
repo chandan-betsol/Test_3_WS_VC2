@@ -1,0 +1,58 @@
+table vwEncounterType
+	lineageTag: fdfff160-a296-46e8-8a0c-8b6d3f480d7e
+
+	column EncounterTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: e47fb90c-feb4-483c-a6e9-ae5e758af435
+		summarizeBy: none
+		sourceColumn: EncounterTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PracticeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 72fdbdc9-0b86-436e-9cd7-e2ee18139ac5
+		summarizeBy: count
+		sourceColumn: PracticeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterType
+		dataType: string
+		lineageTag: 4eb2c396-73de-463d-a9e7-74e076be3c60
+		summarizeBy: none
+		sourceColumn: EncounterType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Intake
+		dataType: string
+		lineageTag: 1868e1d7-ab42-451b-95b7-1c026d13b0b2
+		summarizeBy: none
+		sourceColumn: Intake
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitStatus
+		dataType: string
+		lineageTag: 481b9056-f1b8-4898-9f00-3322e2c2e086
+		summarizeBy: none
+		sourceColumn: VisitStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwEncounterType-3fe74e41-3fb8-4593-9352-6797cf2fe889 = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwEncounterType = Source{[Schema="dbo",Item="vwEncounterType"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwEncounterType,{{"EncounterTypeID", Int64.Type}, {"PracticeID", Int64.Type}, {"EncounterType", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+
