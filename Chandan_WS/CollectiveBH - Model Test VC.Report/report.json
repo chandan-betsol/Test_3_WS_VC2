@@ -50,6 +50,15 @@
           "z": 0.00
         },
         {
+          "config": "{\"name\":\"7275428c253b6eb09e98\",\"layouts\":[{\"id\":0,\"position\":{\"x\":608.6221292990657,\"y\":33.93203021755853,\"z\":2001,\"width\":228.90655305495835,\"height\":266.6088088522456,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"vwFacilitiesMaster.Market\"},{\"queryRef\":\"Measures - model.Sum of Total Gross Outstanding\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"v\",\"Entity\":\"vwFacilitiesMaster\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measures - model\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Market\"},\"Name\":\"vwFacilitiesMaster.Market\",\"NativeReferenceName\":\"Market\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Sum of Total Gross Outstanding\"},\"Name\":\"Measures - model.Sum of Total Gross Outstanding\",\"NativeReferenceName\":\"Sum of Total Gross Outstanding\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 266.61,
+          "width": 228.91,
+          "x": 608.62,
+          "y": 33.93,
+          "z": 2001.00
+        },
+        {
           "config": "{\"name\":\"bb4454b430965e3a1b05\",\"layouts\":[{\"id\":0,\"position\":{\"x\":998,\"y\":0,\"z\":1000,\"width\":282,\"height\":197,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(z_RefreshDate.Fecha.)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"z\",\"Entity\":\"z_RefreshDate\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"z\"}},\"Property\":\"Fecha.\"}},\"Function\":3},\"Name\":\"Min(z_RefreshDate.Fecha.)\",\"NativeReferenceName\":\"Earliest Fecha.\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"z\"}},\"Property\":\"Fecha.\"}},\"Function\":3}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
           "filters": "[]",
           "height": 197.00,
