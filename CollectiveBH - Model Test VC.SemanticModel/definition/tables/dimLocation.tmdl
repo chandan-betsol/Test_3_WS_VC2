@@ -1,0 +1,32 @@
+table dimLocation
+	lineageTag: 3bb0b8bc-63bd-41b3-b5e9-608066eb5aae
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 23734176-a636-42d3-8b97-e45f37da3acb
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = User
+
+	column Description
+		dataType: string
+		lineageTag: a2cac7cb-e5f4-4702-b4b7-3c07475a2c64
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimLocation-077b1149-0d56-44da-a7d7-646a315387c7 = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    SAG_vwLocation = Source{[Schema="SAG",Item="vwLocation"]}[Data]
+				in
+				    SAG_vwLocation
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,55 @@
+table Parameter_MKTLTV_Dim
+	lineageTag: 31603ca0-ee81-4e40-9b23-c298ddc3c177
+
+	column Parameter_EMR_SF
+		lineageTag: 46ce95b8-95f2-4d60-964d-10659564dd82
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter_EMR_SF Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter_EMR_SF Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_EMR_SF Fields'
+		isHidden
+		lineageTag: 0b1a4d97-d3bb-4e54-8849-8c634cc7c059
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter_EMR_SF Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_EMR_SF Order'
+		isHidden
+		formatString: 0
+		lineageTag: ecbf6a6e-8b2b-41d7-b37d-353702e80e7a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter_MKTLTV_Dim-007517df-682c-47fd-8919-bcc3dc1cc0b3 = calculated
+		mode: import
+		source =
+				{
+				    ("Lead Source", NAMEOF('vwMktgwithLTV'[LeadSource]), 0),
+				    ("Referral Type", NAMEOF('vwMktgwithLTV'[ReferralType]), 1),
+				    ("Facility", NAMEOF('vwMktgwithLTV'[Facility]), 2),
+				    ("Modality", NAMEOF('vwMktgwithLTV'[Modality]), 3),
+				    ("Clinician", NAMEOF('vwMktgwithLTV'[Clinician]), 4),
+				    ("Insurance", NAMEOF('vwMktgwithLTV'[Insurance]), 5),
+				    --("Market", NAMEOF('vwMktgwithLTV'[Market]), 3),
+				    ("Visit Preference", NAMEOF('vwMktgwithLTV'[VisitPreference]), 6),
+				    ("Patient", NAMEOF('vwMktgwithLTV'[MRNNumber]), 7)
+				}
+
+	annotation PBI_Id = 32ae085b61424b399b3e7c5389966012
+

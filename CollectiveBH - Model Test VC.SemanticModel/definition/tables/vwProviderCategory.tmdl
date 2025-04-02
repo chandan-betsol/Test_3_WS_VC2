@@ -1,0 +1,51 @@
+table vwProviderCategory
+	lineageTag: c6e83491-ccdb-40e6-8c51-e695fc44053d
+
+	column ProviderCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: 590c8dfd-9884-486f-949f-5f2b7e1c99ca
+		summarizeBy: none
+		sourceColumn: ProviderCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PracticeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a928e3a-adf9-490f-a470-0ee426c4f239
+		summarizeBy: count
+		sourceColumn: PracticeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategory
+		dataType: string
+		lineageTag: a6581996-cd3d-4e28-8ff9-6082c998dd30
+		summarizeBy: none
+		sourceColumn: ProviderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeeksToMature
+		dataType: int64
+		formatString: 0
+		lineageTag: 35414c72-7210-47c8-a6e6-6f0fae382c8e
+		summarizeBy: sum
+		sourceColumn: WeeksToMature
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwProviderCategory-f976093f-3f25-408f-9441-0137a1c86252 = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwProviderCategory = Source{[Schema="dbo",Item="vwProviderCategory"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwProviderCategory,{{"ProviderCategoryID", Int64.Type}, {"PracticeID", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

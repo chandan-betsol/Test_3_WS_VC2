@@ -1,0 +1,179 @@
+table vwBudget
+	lineageTag: e75bca98-77e2-4a14-bf03-df4d1c6beeaf
+
+	column BUDGET_ID
+		dataType: string
+		lineageTag: 54b4a6d0-5962-44de-bef0-844d1eae216c
+		summarizeBy: none
+		sourceColumn: BUDGET_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCT_NO
+		dataType: int64
+		formatString: 0
+		lineageTag: 178b5ff7-2ea6-4f5f-a19a-d766cb1d3da2
+		summarizeBy: none
+		sourceColumn: ACCT_NO
+
+		annotation SummarizationSetBy = User
+
+	column DEPT_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d5ca2af-7e78-4fcd-a805-16d7badfd708
+		summarizeBy: none
+		sourceColumn: DEPT_ID
+
+		annotation SummarizationSetBy = User
+
+	column LOCATION_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: ad2609ed-5dc8-4c75-9f8c-63fce1052ad7
+		summarizeBy: none
+		sourceColumn: LOCATION_ID
+
+		annotation SummarizationSetBy = User
+
+	column CLASSID
+		dataType: int64
+		formatString: 0
+		lineageTag: 92f9c400-1712-454d-8f52-1375ac538adc
+		summarizeBy: none
+		sourceColumn: CLASSID
+
+		annotation SummarizationSetBy = User
+
+	column Month_Ended_January_2023
+		dataType: double
+		lineageTag: 27ceb400-ba5a-4de3-9734-ead03894a97f
+		summarizeBy: sum
+		sourceColumn: Month_Ended_January_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_February_2023
+		dataType: double
+		lineageTag: 6e38aa9a-3c4c-4bc5-81ac-53ce307838ea
+		summarizeBy: sum
+		sourceColumn: Month_Ended_February_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_March_2023
+		dataType: double
+		lineageTag: 4dfd25f6-9a6e-4b6e-ba50-20381cbd098c
+		summarizeBy: sum
+		sourceColumn: Month_Ended_March_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_April_2023
+		dataType: double
+		lineageTag: 126c5d3d-f632-4f75-80a1-6e9ba2020cba
+		summarizeBy: sum
+		sourceColumn: Month_Ended_April_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_May_2023
+		dataType: double
+		lineageTag: 37a7a52c-5e4d-4974-bce2-4308d789da4c
+		summarizeBy: sum
+		sourceColumn: Month_Ended_May_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_June_2023
+		dataType: double
+		lineageTag: d7e8501d-a36e-4353-9778-3510cf568fb8
+		summarizeBy: sum
+		sourceColumn: Month_Ended_June_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_July_2023
+		dataType: double
+		lineageTag: f428369d-2ac4-4d8e-bba2-bba0878a467d
+		summarizeBy: sum
+		sourceColumn: Month_Ended_July_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_August_2023
+		dataType: double
+		lineageTag: 54c344a2-0751-4dee-9fce-d84c9868397d
+		summarizeBy: sum
+		sourceColumn: Month_Ended_August_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_September_2023
+		dataType: double
+		lineageTag: eb799161-21d9-4874-bf9e-bb2bb450176e
+		summarizeBy: sum
+		sourceColumn: Month_Ended_September_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_October_2023
+		dataType: double
+		lineageTag: 4c9054f3-ee07-4dcd-86c0-2e895bc21d90
+		summarizeBy: sum
+		sourceColumn: Month_Ended_October_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_November_2023
+		dataType: double
+		lineageTag: d70ba50b-cc66-4044-aad0-a116a768445d
+		summarizeBy: sum
+		sourceColumn: Month_Ended_November_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month_Ended_December_2023
+		dataType: double
+		lineageTag: 350a5b05-72e5-4ef6-90b0-1dcab3e85394
+		summarizeBy: sum
+		sourceColumn: Month_Ended_December_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition vwBudget-767fc77a-da1a-481b-988b-b3f449c48589 = m
+		mode: import
+		queryGroup: Settings
+		source =
+				let
+				    Source = Sql.Database("azr-cbh-use1-sql-server01.database.windows.net", "CollectiveBH"),
+				    SAG_vwBudget = Source{[Schema="SAG",Item="vwBudget"]}[Data]
+				in
+				    SAG_vwBudget
+
+	annotation PBI_ResultType = Exception
+
