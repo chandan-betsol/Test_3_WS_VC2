@@ -1,0 +1,100 @@
+table vwSumProviderTrend
+	lineageTag: ad6fa56e-04ec-4c8c-90e1-39fe10c5ecdd
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: a8c0b997-fc6f-4d6a-bbea-dc76dd2de668
+		summarizeBy: count
+		sourceColumn: ResourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clinician
+		dataType: string
+		lineageTag: 628893ba-40fc-4972-a172-a4cc38e154fe
+		summarizeBy: none
+		sourceColumn: Clinician
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: 32dc577e-9a1a-4262-9fff-c75b795f4d7b
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EncounterWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 4979ea45-d2a0-44fa-b010-908d2dfc585d
+		summarizeBy: sum
+		sourceColumn: EncounterWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column TenureMonths
+		dataType: int64
+		formatString: 0
+		lineageTag: 5de8dc10-638b-4557-9ea3-cf8d8f504895
+		summarizeBy: sum
+		sourceColumn: TenureMonths
+
+		annotation SummarizationSetBy = Automatic
+
+	column Visits
+		dataType: int64
+		formatString: 0
+		lineageTag: 40b70dd7-b884-43fe-8735-415c2ddeaf91
+		summarizeBy: sum
+		sourceColumn: Visits
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 678d2126-824d-4976-88cb-a8c255054c7f
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column TenureSlicer = ```
+			
+			SWITCH(
+			    TRUE(),
+			    'vwSumProviderTrend'[TenureMonths] <= 6, "Up to 6 months",
+			    'vwSumProviderTrend'[TenureMonths] <= 12, "Up to 12 months",
+			    'vwSumProviderTrend'[TenureMonths] > 12, "More than 12 months",
+			    "NA"
+			)
+			
+			```
+		lineageTag: 2e1ca5f1-2e80-4d03-b3b7-9260734d9264
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 3fc2a512-ed1e-44ca-9822-85f7d464f8c3
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwSumProviderTrend = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwSumProviderTrend = Source{[Schema="dbo",Item="vwSumProviderTrend"]}[Data]
+				in
+				    dbo_vwSumProviderTrend
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

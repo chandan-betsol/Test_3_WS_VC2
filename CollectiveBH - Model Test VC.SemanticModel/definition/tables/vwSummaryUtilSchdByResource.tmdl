@@ -1,0 +1,184 @@
+table vwSummaryUtilSchdByResource
+	lineageTag: 827627d6-28ab-44c7-86e3-87814f07066f
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: 19f4a710-89bf-4e16-ae76-2e58ddcf3b42
+		summarizeBy: none
+		sourceColumn: ResourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderCategory
+		dataType: string
+		lineageTag: 08dc7568-b400-4972-a479-97238aec6105
+		summarizeBy: none
+		sourceColumn: ProviderCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: b65656cc-5186-4e4f-be0c-0ba9fe6debf8
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fd666ad4-a779-4639-afc0-dd05a725aff8
+		summarizeBy: none
+		sourceColumn: VisitDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		dataType: string
+		lineageTag: 8259b64b-d77d-45d0-9435-26510cb6a988
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartWeek
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fb177277-9189-41a3-8d62-979da78fd6ca
+		summarizeBy: none
+		sourceColumn: StartWeek
+
+		variation Variation
+			isDefault
+			relationship: c804f0cf-474b-4ead-b852-c5a9a9160990
+			defaultHierarchy: LocalDateTable_ff2c886f-5afc-47c4-8fa9-558a38cfa664.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EndWeek
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6971f076-0eb2-4e8f-9352-5e12324b9b2c
+		summarizeBy: none
+		sourceColumn: EndWeek
+
+		variation Variation
+			isDefault
+			relationship: f06faa6b-ff3d-4849-b17a-206b819e82bd
+			defaultHierarchy: LocalDateTable_2c5f47a5-761c-43a7-bccf-830803fd484f.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WeekName
+		dataType: string
+		lineageTag: 5b3e1244-d918-4844-a497-21b27b57ce5e
+		summarizeBy: none
+		sourceColumn: WeekName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompHours
+		dataType: double
+		lineageTag: add25470-95d4-4db3-91da-4d382eadc550
+		summarizeBy: sum
+		sourceColumn: CompHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SchdHours
+		dataType: double
+		lineageTag: ca380183-850a-49dc-90d6-e5e95b5f54f2
+		summarizeBy: sum
+		sourceColumn: SchdHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotHours
+		dataType: double
+		lineageTag: c5271bcc-ac02-4f1b-aaec-deb2021a47a4
+		summarizeBy: sum
+		sourceColumn: TotHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Goal
+		dataType: double
+		lineageTag: f0359be9-e765-4fea-b7ad-8b58e42ce531
+		summarizeBy: sum
+		sourceColumn: Goal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column numVisits
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d129d8c-d6ef-47bc-a64f-7976969e0fe8
+		summarizeBy: sum
+		sourceColumn: numVisits
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a120548-0d96-4fac-9cf3-d8f4c14bfed6
+		summarizeBy: none
+		sourceColumn: VisitStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: c8f3eee5-aaaf-4832-a27e-b27618105a30
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: b91742aa-e202-4607-8620-6ddb0dd53315
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwSummaryUtilSchdByResource-6fd0e878-26e3-4b20-a890-792b0aa874d5 = m
+		mode: import
+		queryGroup: FACT
+		source =
+				let
+				    Source = Sql.Database(ServerName, DBName),
+				    dbo_vwSummaryUtilSchdByResource = Source{[Schema="dbo",Item="vwSummaryUtilSchdByResource"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_vwSummaryUtilSchdByResource,{{"ResourceId", Int64.Type}, {"VisitStatusID", Int64.Type}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Status", each if [VisitStatusID] = 2 then "Completed" else "Scheduled"),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Added Conditional Column", "Full Name", each Text.Combine({[LastName], [FirstName]}, ", "), type text),
+				    #"Removed Columns" = Table.RemoveColumns(#"Inserted Merged Column",{"LastName", "FirstName"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns",{{"VisitDate", type date}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Exception
+

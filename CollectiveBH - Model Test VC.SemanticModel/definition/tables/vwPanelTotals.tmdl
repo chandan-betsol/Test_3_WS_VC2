@@ -1,0 +1,59 @@
+table vwPanelTotals
+	lineageTag: 615bf59f-adf2-4dfa-9116-7ecb0aedfeaf
+
+	column ResourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: 798bf9f2-e78f-4925-a8f7-61b0956c9d52
+		summarizeBy: none
+		sourceColumn: ResourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: d5e28758-a1a7-4d31-967b-4ccaf1756159
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: 950a39de-0413-40ae-8189-ee8ed688a22e
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalPanel
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f45c926-2bee-431e-a207-0c75ecdc5f41
+		summarizeBy: sum
+		sourceColumn: TotalPanel
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivePanel
+		dataType: int64
+		formatString: 0
+		lineageTag: 19c38348-e447-4399-979c-b09a187f64e4
+		summarizeBy: sum
+		sourceColumn: ActivePanel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwPanelTotals = m
+		mode: import
+		queryGroup: FACT\Panel
+		source =
+				let
+				    Source = Source,
+				    #"Filtered Rows" = Table.SelectRows(Source, each Text.Contains([Name], "Panel") and Text.Contains([Name], "Combined")),
+				    dbo_vwSumClinicianPanelTotals = #"Filtered Rows"{[Schema="dbo",Item="vwSumClinicianPanelTotalsCombined"]}[Data]
+				in
+				    dbo_vwSumClinicianPanelTotals
+
+	annotation PBI_ResultType = Exception
+
