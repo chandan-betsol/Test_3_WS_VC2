@@ -1,0 +1,128 @@
+table vwEncounterPayrollReducedCombined
+	lineageTag: baeeb6e7-81b9-4898-be6c-023a44e6eca1
+
+	column EncounterID
+		dataType: double
+		lineageTag: 244c0b5f-97f0-4d98-8b59-57c0d89f2dba
+		summarizeBy: count
+		sourceColumn: EncounterID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column visitid
+		dataType: double
+		lineageTag: 098eac05-b1ee-48f4-b1b5-0b951e6216ca
+		summarizeBy: sum
+		sourceColumn: visitid
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ResourceID
+		dataType: double
+		lineageTag: afc43a56-8552-4589-8bcb-86f70de70ebf
+		summarizeBy: none
+		sourceColumn: ResourceID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FlagClosed
+		dataType: int64
+		formatString: 0
+		lineageTag: 961c980b-23eb-40d0-8de9-a887191cd50f
+		summarizeBy: sum
+		sourceColumn: FlagClosed
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitTypeGroup
+		dataType: string
+		lineageTag: d2903a6e-5f10-48c3-8964-3c7dfd078335
+		summarizeBy: none
+		sourceColumn: VisitTypeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitDate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 6e35a88e-a656-44ab-a315-038223195fe0
+		summarizeBy: none
+		sourceColumn: VisitDate
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column VisitType
+		dataType: string
+		lineageTag: af5f9401-6051-46e3-9a4b-cad4188ad5fd
+		summarizeBy: none
+		sourceColumn: VisitType
+
+		annotation SummarizationSetBy = Automatic
+
+	column NoteClosedDateTime
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 4444b928-fcee-4787-a298-fbecddf83dbf
+		summarizeBy: none
+		sourceColumn: NoteClosedDateTime
+
+		variation Variation
+			isDefault
+			relationship: 8f40f79c-b0bd-4d77-8c34-5d4e407e5d84
+			defaultHierarchy: LocalDateTable_8970fe3d-97bf-4c67-ae60-78f06a8ddbc0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column VisitStatus
+		dataType: string
+		lineageTag: 65dfed92-78cb-4185-af95-1bffc6594938
+		summarizeBy: none
+		sourceColumn: VisitStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: bcb30c57-529c-4b9a-a6ae-bb65cdbf2dba
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column PatientFullName
+		dataType: string
+		lineageTag: 3aecf2cb-d721-41bf-9348-f678502eac9f
+		summarizeBy: none
+		sourceColumn: PatientFullName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vwEncounterPayrollReducedCombined = m
+		mode: import
+		queryGroup: FACT\Payroll
+		source =
+				let
+				    Source = Table.Combine({vwEncounterPayrollReduced, #"PRV vwEncounterPayrollReduced"})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
